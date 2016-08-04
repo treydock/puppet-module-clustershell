@@ -1,0 +1,7 @@
+###
+### File managed by puppet
+###
+
+<% @data.keys.sort.each do |group| -%>
+<%= group %>: <%= @data[group].join(',') %>
+<% end -%>

@@ -1,0 +1,32 @@
+{
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat"
+    },
+    {
+      "operatingsystem": "CentOS"
+    },
+    {
+      "operatingsystem": "Fedora"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "name": "geoffjay-clustershell",
+  "version": "0.1.4",
+  "author": "geoffjay",
+  "summary": "clustershell installation and configuration",
+  "license": "LGPLv3+",
+  "source": "git://github.com/geoffjay/puppet-clustershell.git",
+  "project_page": "http://github.com/geoffjay/puppet-clustershell",
+  "issues_url": "https://github.com/geoffjay/puppet-clustershell/issues",
+  "description": "Module for configuring clustershell",
+  "dependencies": [
+    { "name": "puppetlabs-stdlib", "version_requirement": ">= 3.2.0 <5.0.0" },
+    { "name": "stahnma-epel", "version_requirement": "0.x" }
+  ]
+}
