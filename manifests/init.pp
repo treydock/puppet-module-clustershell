@@ -125,6 +125,7 @@ class clustershell (
   $groups_auto_dir      = $clustershell::params::groups_auto_dir,
   $groups_conf_dir      = $clustershell::params::groups_conf_dir,
   $include_slurm_groups = false,
+  $default_group_source = 'local',
   $groupmembers         = $clustershell::params::groupmembers,
 ) inherits clustershell::params {
 
