@@ -1,0 +1,8 @@
+name 'geoffjay-clustershell'
+version '0.1.4'
+source 'git://github.com/geoffjay/puppet-clustershell.git'
+author 'geoffjay'
+license 'LGPLv3+'
+summary 'clustershell installation and configuration'
+description 'Module for configuring clustershell'
+project_page 'http://github.com/geoffjay/puppet-clustershell'

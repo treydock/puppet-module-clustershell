@@ -1,0 +1,15 @@
+###
+### File managed by puppet
+###
+
+[<%= @name %>]
+map: <%= @map %>
+<% if @all != 'UNSET' -%>
+all: <%= @all %>
+<% end -%>
+<% if @list != 'UNSET' -%>
+list: <%= @list %>
+<% end -%>
+<% if @reverse != 'UNSET' -%>
+reverse: <%= @reverse %>
+<% end -%>
