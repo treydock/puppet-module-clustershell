@@ -64,15 +64,9 @@ class clustershell::params {
     $safe_ssh_enable = $ssh_enable
   }
 
-  $ssh_user = $::clustershell_ssh_user ? {
-    undef   => 'root',
-    default => $::clustershell_ssh_user,
-  }
+  $ssh_user = undef
 
-  $ssh_path = $::clustershell_ssh_path ? {
-    undef   => '/usr/bin/ssh',
-    default => $::clustershell_ssh_path,
-  }
+  $ssh_path = 'ssh'
 
   $ssh_options = $::clustershell_ssh_options ? {
     undef   => '-oStrictHostKeyChecking=no',

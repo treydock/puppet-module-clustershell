@@ -17,11 +17,11 @@ node_count: <%= @node_count %>
 verbosity: <%= @verbosity %>
 
 # Add always all remote hosts to known_hosts without confirmation
-<% if @ssh_enable -%>
+<% if @ssh_user -%>
 ssh_user: <%= @ssh_user %>
+<% end -%>
 ssh_path: <%= @ssh_path %>
 ssh_options: <%= @ssh_options %>
-<% end -%>
 
 # Non-interactively performing password authentication with SSH's so called
 # "interactive keyboard password authentication".
