@@ -1,0 +1,7 @@
+#### File managed by Puppet ####
+<%- @data.keys.sort.each do |source| -%>
+<%= source %>:
+  <%- @data[source].keys.sort.each do |group| -%>
+    <%= group %>: '<%= @data[source][group] %>'
+  <%- end -%>
+<%- end -%>

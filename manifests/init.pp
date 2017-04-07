@@ -127,6 +127,7 @@ class clustershell (
   $include_slurm_groups = false,
   $default_group_source = 'local',
   $groupmembers         = $clustershell::params::groupmembers,
+  $group_yaml           = {},
 ) inherits clustershell::params {
 
   validate_bool($ssh_enable)
@@ -226,6 +227,7 @@ class clustershell (
   }
 
   create_resources('clustershell::groupmember', $groupmembers)
+  create_resources('clustershell::group_yaml', $group_yaml)
 
   if $include_slurm_groups {
     clustershell::group_source { 'slurm':
