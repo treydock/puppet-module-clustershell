@@ -102,6 +102,8 @@ class clustershell::params {
 
       $clush_conf           = '/etc/clustershell/clush.conf'
       $clush_conf_template  = 'clustershell/clush.conf.erb'
+      $defaults_conf        = '/etc/clustershell/defaults.conf'
+      $defaults_conf_template = 'clustershell/defaults.conf.erb'
 
       $groups_config        = '/etc/clustershell/groups.d/local.cfg'
       $groups_concat_dir    = '/etc/clustershell/tmp'
@@ -118,6 +120,8 @@ class clustershell::params {
 
       $clush_conf           = '/etc/clustershell/clush.conf'
       $clush_conf_template  = 'clustershell/clush.conf.erb'
+      $defaults_conf        = '/etc/clustershell/defaults.conf'
+      $defaults_conf_template = 'clustershell/defaults.conf.erb'
 
       $groups_config        = '/etc/clustershell/groups.d/local.cfg'
       $groups_concat_dir    = '/etc/clustershell/tmp'

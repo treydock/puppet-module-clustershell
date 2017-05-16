@@ -118,6 +118,8 @@ class clustershell (
   $clush_conf_dir       = $clustershell::params::clush_conf_dir,
   $clush_conf           = $clustershell::params::clush_conf,
   $clush_conf_template  = $clustershell::params::clush_conf_template,
+  $defaults_conf        = $clustershell::params::defaults_conf,
+  $defaults_conf_template = $clustershell::params::defaults_conf_template,
   $groups_config        = $clustershell::params::groups_config,
   $groups_concat_dir    = $clustershell::params::groups_concat_dir,
   $groups_conf          = $clustershell::params::groups_conf,
@@ -126,6 +128,7 @@ class clustershell (
   $groups_conf_dir      = $clustershell::params::groups_conf_dir,
   $include_slurm_groups = false,
   $default_group_source = 'local',
+  $default_distant_workername = 'ssh',
   $groupmembers         = $clustershell::params::groupmembers,
   $group_yaml           = {},
 ) inherits clustershell::params {
@@ -207,6 +210,14 @@ class clustershell (
     mode    => '0644',
     require => File['/etc/clustershell'],
     content => template($clush_conf_template),
+  }
+
+  file { $defaults_conf:
+    ensure  => 'file',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template($defaults_conf_template),
   }
 
   file { $groups_conf:
