@@ -5,6 +5,7 @@ define clustershell::group_source (
   $all      = 'UNSET',
   $list     = 'UNSET',
   $reverse  = 'UNSET',
+  $section  = $name,
 ) {
 
   include ::clustershell
