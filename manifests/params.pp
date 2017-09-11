@@ -13,50 +13,50 @@
 
 class clustershell::params {
 
-  $fanout = $::clustershell_fanout ? {
+  $fanout = getvar('::clustershell_fanout') ? {
     undef   => 64,
-    default => $::clustershell_fanout,
+    default => getvar('::clustershell_fanout'),
   }
 
-  $connect_timeout = $::clustershell_connect_timeout ? {
+  $connect_timeout = getvar('::clustershell_connect_timeout') ? {
     undef   => 15,
-    default => $::clustershell_connect_timout,
+    default => getvar('::clustershell_connect_timout'),
   }
 
-  $command_timeout = $::clustershell_command_timeout ? {
+  $command_timeout = getvar('::clustershell_command_timeout') ? {
     undef   => 0,
-    default => $::clustershell_command_timeout,
+    default => getvar('::clustershell_command_timeout'),
   }
 
-  $color = $::clustershell_color ? {
+  $color = getvar('::clustershell_color') ? {
     undef   => 'auto',
-    default => $::clustershell_color,
+    default => getvar('::clustershell_color'),
   }
 
-  $fd_max = $::clustershell_fd_max ? {
+  $fd_max = getvar('::clustershell_fd_max') ? {
     undef   => 8192,
-    default => $::clustershell_fd_max,
+    default => getvar('::clustershell_fd_max'),
   }
 
-  $history_size = $::clustershell_history_size ? {
+  $history_size = getvar('::clustershell_history_size') ? {
     undef   => 100,
-    default => $::clustershell_history_size,
+    default => getvar('::clustershell_history_size'),
   }
 
-  $node_count = $::clustershell_node_count ? {
+  $node_count = getvar('::clustershell_node_count') ? {
     undef   => 'yes',
-    default => $::clustershell_node_count,
+    default => getvar('::clustershell_node_count'),
   }
 
-  $verbosity = $::clustershell_verbosity ? {
+  $verbosity = getvar('::clustershell_verbosity') ? {
     undef   => '1',
-    default => $::clustershell_verbosity,
+    default => getvar('::clustershell_verbosity'),
   }
 
   # if top scope variable is a string, might need to convert to boolean
-  $ssh_enable = $::clustershell_ssh_enable ? {
+  $ssh_enable = getvar('::clustershell_ssh_enable') ? {
     undef   => false,
-    default => $::clustershell_ssh_enable,
+    default => getvar('::clustershell_ssh_enable'),
   }
   if is_string($ssh_enable) {
     $safe_ssh_enable = str2bool($ssh_enable)
@@ -68,21 +68,21 @@ class clustershell::params {
 
   $ssh_path = 'ssh'
 
-  $ssh_options = $::clustershell_ssh_options ? {
+  $ssh_options = getvar('::clustershell_ssh_options') ? {
     undef   => '-oStrictHostKeyChecking=no',
-    default => $::clustershell_ssh_options,
+    default => getvar('::clustershell_ssh_options'),
   }
 
   # Following parameters should not be changed.
-  $ensure = $::clustershell_ensure ? {
+  $ensure = getvar('::clustershell_ensure') ? {
     undef   => 'present',
-    default => $::clustershell_ensure,
+    default => getvar('::clustershell_ensure'),
   }
 
   # if top scope variable is a string, might need to convert to boolean
-  $install_vim_syntax = $::clustershell_install_vim_syntax ? {
+  $install_vim_syntax = getvar('::clustershell_install_vim_syntax') ? {
     undef   => false,
-    default => $::clustershell_install_vim_syntax,
+    default => getvar('::clustershell_install_vim_syntax'),
   }
   if is_string($install_vim_syntax) {
     $safe_install_vim_syntax = str2bool($install_vim_syntax)
