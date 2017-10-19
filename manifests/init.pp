@@ -106,14 +106,14 @@ class clustershell (
   $history_size         = $clustershell::params::history_size,
   $node_count           = $clustershell::params::node_count,
   $verbosity            = $clustershell::params::verbosity,
-  $ssh_enable           = $clustershell::params::ssh_enable,
+  Boolean $ssh_enable   = $clustershell::params::ssh_enable,
   $ssh_user             = $clustershell::params::ssh_user,
   $ssh_path             = $clustershell::params::ssh_path,
   $ssh_options          = $clustershell::params::ssh_options,
   $ensure               = $clustershell::params::ensure,
   $package_require      = $clustershell::params::package_require,
   $package_name         = $clustershell::params::package_name,
-  $install_vim_syntax   = $clustershell::params::install_vim_syntax,
+  Boolean $install_vim_syntax = $clustershell::params::install_vim_syntax,
   $vim_package_name     = $clustershell::params::vim_package_name,
   $clush_conf_dir       = $clustershell::params::clush_conf_dir,
   $clush_conf           = $clustershell::params::clush_conf,
@@ -126,17 +126,12 @@ class clustershell (
   $groups_conf_template = $clustershell::params::groups_conf_template,
   $groups_auto_dir      = $clustershell::params::groups_auto_dir,
   $groups_conf_dir      = $clustershell::params::groups_conf_dir,
-  $include_slurm_groups = false,
+  Boolean $include_slurm_groups = false,
   $default_group_source = 'local',
   $default_distant_workername = 'ssh',
-  $groupmembers         = $clustershell::params::groupmembers,
+  Hash $groupmembers         = $clustershell::params::groupmembers,
   $group_yaml           = {},
 ) inherits clustershell::params {
-
-  validate_bool($ssh_enable)
-  validate_bool($install_vim_syntax)
-  validate_bool($include_slurm_groups)
-  validate_hash($groupmembers)
 
   case $ensure {
     /(present)/: {
