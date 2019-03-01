@@ -94,7 +94,6 @@ class clustershell::params {
 
   case $::osfamily {
     redhat: {
-      $package_require      = 'Yumrepo[epel]'
       $package_name         = 'clustershell'
       $vim_package_name     = 'vim-clustershell'
 
@@ -115,7 +114,6 @@ class clustershell::params {
       $groups_conf_dir      = '/etc/clustershell/groups.conf.d'
     }
     debian: {
-      $package_require      = undef
       $package_name         = 'clustershell'
 
       $clush_conf           = '/etc/clustershell/clush.conf'

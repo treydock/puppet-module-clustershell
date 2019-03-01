@@ -111,8 +111,8 @@ class clustershell (
   $ssh_path             = $clustershell::params::ssh_path,
   $ssh_options          = $clustershell::params::ssh_options,
   $ensure               = $clustershell::params::ensure,
-  $package_require      = $clustershell::params::package_require,
   $package_name         = $clustershell::params::package_name,
+  $manage_epel          = true,
   Boolean $install_vim_syntax = $clustershell::params::install_vim_syntax,
   $vim_package_name     = $clustershell::params::vim_package_name,
   $clush_conf_dir       = $clustershell::params::clush_conf_dir,
@@ -147,10 +147,15 @@ class clustershell (
 
   case $::osfamily {
     'RedHat': {
-      include ::epel
+      if $manage_epel {
+        include ::epel
+        $package_require = Yumrepo['epel']
+      } else {
+        $package_require = undef
+      }
     }
     default: {
-      # Do nothing
+      $package_require = undef
     }
   }
 
