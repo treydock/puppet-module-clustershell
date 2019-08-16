@@ -1,4 +1,9 @@
-# See README.md for details
+# @param map
+# @param ensure
+# @param all
+# @param list
+# @param reverse
+# @param section
 define clustershell::group_source (
   $map,
   $ensure   = 'present',

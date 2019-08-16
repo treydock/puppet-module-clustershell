@@ -9,19 +9,15 @@ describe 'clustershell::groupmember' do
 
       let(:title) { 'foo' }
 
-      let(:params) {{ :group => 'bar' }}
+      let(:params) { { group: 'bar' } }
 
-      it { should create_clustershell__groupmember('foo') }
+      it { is_expected.to create_clustershell__groupmember('foo') }
 
       it do
-        should contain_datacat_fragment('clustershell::groupmember foo').with({
-          :target   => 'clustershell-groups',
-          :data     => {
-            'bar' => ['foo'],
-          },
-        })
+        is_expected.to contain_concat__fragment('clustershell-groups.member foo').with(target: '/etc/clustershell/groups.d/local.cfg',
+                                                                                       content: "bar: foo\n",
+                                                                                       order: '50')
       end
-
     end
   end
 end
