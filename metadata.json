@@ -1,33 +1,60 @@
 {
-  "operatingsystem_support": [
+  "name": "treydock-clustershell",
+  "version": "0.1.0",
+  "author": "treydock",
+  "summary": "clustershell Puppet module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/treydock/puppet-module-clustershell",
+  "project_page": "https://github.com/treydock/puppet-module-clustershell",
+  "issues_url": "https://github.com/treydock/puppet-module-clustershell/issues",
+  "dependencies": [
     {
-      "operatingsystem": "RedHat"
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0 <7.0.0"
     },
     {
-      "operatingsystem": "CentOS"
-    },
-    {
-      "operatingsystem": "Fedora"
+      "name": "stahnma/epel",
+      "version_requirement": ">= 1.0.0 <2.0.0"
     }
+  ],
+  "operatingsystem_support": [
+      {
+        "operatingsystem": "CentOS",
+        "operatingsystemrelease": [
+          "6",
+          "7"
+        ]
+      },
+      {
+        "operatingsystem": "OracleLinux",
+        "operatingsystemrelease": [
+          "6",
+          "7"
+        ]
+      },
+      {
+        "operatingsystem": "RedHat",
+        "operatingsystemrelease": [
+          "6",
+          "7"
+        ]
+      },
+      {
+        "operatingsystem": "Scientific",
+        "operatingsystemrelease": [
+          "6",
+          "7"
+        ]
+      }
   ],
   "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": "3.x"
-    }
+      {
+        "name": "puppet",
+        "version_requirement": ">= 5.0.0 < 7.0.0"
+      }
   ],
-  "name": "geoffjay-clustershell",
-  "version": "0.1.4",
-  "author": "geoffjay",
-  "summary": "clustershell installation and configuration",
-  "license": "LGPLv3+",
-  "source": "git://github.com/geoffjay/puppet-clustershell.git",
-  "project_page": "http://github.com/geoffjay/puppet-clustershell",
-  "issues_url": "https://github.com/geoffjay/puppet-clustershell/issues",
   "description": "Module for configuring clustershell",
-  "dependencies": [
-    { "name": "puppetlabs-stdlib", "version_requirement": ">= 3.2.0 <5.0.0" },
-    { "name": "puppetlabs/inifile", "version_requirement": ">= 1.0.0 <2.0.0" },
-    { "name": "stahnma-epel", "version_requirement": ">= 1.0.0 <2.0.0" }
-  ]
+  "pdk-version": "1.10.0",
+  "template-url": "https://github.com/treydock/pdk-templates.git#master",
+  "template-ref": "heads/master-0-g68ecb62"
 }
