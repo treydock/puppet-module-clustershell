@@ -9,13 +9,16 @@ describe 'clustershell' do
 
       it { is_expected.to create_class('clustershell') }
       if facts[:os]['family'] == 'RedHat'
+        package_require = 'Yumrepo[epel]'
         it { is_expected.to contain_class('epel') }
+      else
+        package_require = nil
       end
 
       it do
         is_expected.to contain_package('clustershell').with(ensure: 'present',
                                                             name: 'clustershell',
-                                                            require: 'Yumrepo[epel]')
+                                                            require: package_require)
       end
 
       it { is_expected.not_to contain_package('python-clustershell') }

@@ -12,6 +12,22 @@
       collection: puppet5
     - set: centos-7
       collection: puppet6
+    - set: debian-8
+      collection: puppet5
+    - set: debian-8
+      collection: puppet6
+    - set: debian-9
+      collection: puppet5
+    - set: debian-9
+      collection: puppet6
+    - set: ubuntu-1604
+      collection: puppet5
+    - set: ubuntu-1604
+      collection: puppet6
+    - set: ubuntu-1804
+      collection: puppet5
+    - set: ubuntu-1804
+      collection: puppet6
   user: treydock
   secure: "bEbWN3YeqMsN1F75iugxwNmbS/F9aqNZqe+YCAD12uiqVT8V41FF8l16hfwNbAaSxMbD6KtRI1WZqHMgdBnNXPOqhcD7zy3ZP41ugPfd+hdeulAZgoihSEC1LzXdWX61xpVKSMRwaDB6Sxx1p2035sDz9NNDzzqHZbYgoSCCtEqJfzbHyDm45ygnq00IW0TVwmYr6kfmzqC/hhg9IHOYFIvFBF3sTJhVIdQR/xEYtoiyLIDfzU5X1jg/qqEYwDN5TJm8qS4gNy2cz4pb3g11tPsXDDx3GX4abkKWU2vt18bzM/JLAGoqCH3r0OVY7o8t1hikN9YofBobmqhblvrGOklUHnAPY7PJQsrixnh6/A+zLdCsyY73YX23AJv7QDuNBsraGQiSxaazkuR6wryAGgnQdw4GDZJQ+DCBMfwDLwIJvaCF6Dr99hqInZ7epX+MPhibqMluemZW+wGxplgZGDZDfKijSbRplAb9hNvMSzhQYPYR6vOxi++cTNGDrrmSwBJuRF3lemjZCBRv+lKvTIMdQ8kwHtxMTeJOdxS4f7ap8km67HlfphJscCzB3WPmF9Vy/ZIhPcp2kBXYGfoZkYiviPaZ9v5iKF0Tv6rxtEdzRo93M9ACTrE1xQCrGu/SU6rlVvtY1y9rLj+plu8kaHu3l+PWdNmz2lywLkm/WDY="
 .gitlab-ci.yml:

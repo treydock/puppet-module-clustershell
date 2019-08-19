@@ -7,9 +7,6 @@
   "source": "https://github.com/treydock/puppet-module-clustershell",
   "project_page": "https://github.com/treydock/puppet-module-clustershell",
   "issues_url": "https://github.com/treydock/puppet-module-clustershell/issues",
-  "tags": [
-      "hpc","nodeset","clush"
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -25,40 +22,59 @@
     }
   ],
   "operatingsystem_support": [
-      {
-        "operatingsystem": "CentOS",
-        "operatingsystemrelease": [
-          "6",
-          "7"
-        ]
-      },
-      {
-        "operatingsystem": "OracleLinux",
-        "operatingsystemrelease": [
-          "6",
-          "7"
-        ]
-      },
-      {
-        "operatingsystem": "RedHat",
-        "operatingsystemrelease": [
-          "6",
-          "7"
-        ]
-      },
-      {
-        "operatingsystem": "Scientific",
-        "operatingsystemrelease": [
-          "6",
-          "7"
-        ]
-      }
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04",
+        "18.04"
+      ]
+    }
   ],
   "requirements": [
-      {
-        "name": "puppet",
-        "version_requirement": ">= 5.0.0 < 7.0.0"
-      }
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.0.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "hpc",
+    "nodeset",
+    "clush"
   ],
   "description": "Module for configuring clustershell",
   "pdk-version": "1.10.0",
