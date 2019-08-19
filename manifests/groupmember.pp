@@ -1,16 +1,21 @@
-# Juste a simple concat files to manage groups
+# @param group
+# @param member
 define clustershell::groupmember (
   $group,
-  $member = $title,
+  Variant[Array, String] $member = $title,
 ) {
 
-  $data = {
-    "${group}" => any2array($member),
+  if $member =~ String {
+    $members = [$member]
+  } else {
+    $members = $member
   }
+  $_members = join($members, ',')
 
-  datacat_fragment { "clustershell::groupmember ${title}":
-    target => 'clustershell-groups',
-    data   => $data,
+  concat::fragment { "clustershell-groups.member ${title}":
+    target  => '/etc/clustershell/groups.d/local.cfg',
+    content => "${group}: ${_members}\n",
+    order   => '50',
   }
 
 }

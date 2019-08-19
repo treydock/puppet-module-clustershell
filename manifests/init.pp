@@ -1,182 +1,114 @@
-# == Class: clustershell
+# @summary Manage clustershell
 #
-# Handles installing the clustershell packages.
 #
-# ==== Parameters:
 #
-# [*fanout*]
-#   ...
-#   Default: 64
-#
-# [*connect_timeout*]
-#   ...
-#   Default: 15
-#
-# [*command_timeout*]
-#   ...
-#   Default: 0
-#
-# [*color*]
-#   ...
-#   Default: auto
-#
-# [*fd_max*]
-#   ...
-#   Default: 16384
-#
-# [*history_size*]
-#   ...
-#   Default: 100
-#
-# [*node_count*]
-#   ...
-#   Default: yes
-#
-# [*verbosity*]
-#   ...
-#   Default: 1
-#
-# [*ssh_enable*]
-#   Controls whether or not clush uses SSH settings from the config.
-#   Default: false
-#
-# [*ssh_user*]
-#   The user to use with SSH.
-#   Default: root
-#
-# [*ssh_path*]
-#   The path to the SSH client.
-#   Default: /usr/bin/ssh
-#
-# [*ssh_options*]
-#   Command line options to pass to the SSH client.
-#   Default: -oStrictHostKeyChecking=no
-#
-# [*ensure*]
-#   Ensure if present or absent.
-#   Default: present
-#
-# [*package_name*]
-#   Name of the package.
-#   Default: clustershell
-#
-# [*install_vim_syntax*]
-#   Whether or not to install the VIM package for syntax highlighting.
-#   Default: false
-#
-# [*vim_package_name*]
-#   Name of the package for VIM syntax highlighting.
-#   Default: vim-clustershell
-#
-# === Actions:
-#
-# Installs the clustershell package and configuration.
-# Installs the vim-clustershell package.
-#
-# === Requires:
-#
-# Nothing.
-#
-# === Sample Usage:
-#
-#  # Install the vim syntax package and configure groups:
-#  class { 'clustershell':
-#    install_vim_syntax => true,
-#    groups             => [
-#      'hpc: node[00-99]',
-#      'nfs: nfs1 nfs2 nfs3',
-#    ],
-#  }
-#
-# === Authors:
-#
-# Geoff Johnson <geoff.jay@gmail.com>
-#
-# === Copyright:
-#
-# Copyright (C) 2014 Geoff Johnson, unless otherwise noted.
-#
+# @param fanout
+# @param connect_timeout
+# @param command_timeout
+# @param color
+# @param fd_max
+# @param history_size
+# @param node_count
+# @param verbosity
+# @param ssh_enable
+# @param ssh_user
+# @param ssh_path
+# @param ssh_options
+# @param ensure
+# @param package_name
+# @param package_ensure
+# @param manage_epel
+# @param install_python
+# @param python_package_name
+# @param conf_dir
+# @param conf
+# @param conf_template
+# @param defaults_conf
+# @param defaults_conf_template
+# @param groups_config
+# @param groups_concat_dir
+# @param groups_conf
+# @param groups_conf_template
+# @param groups_auto_dir
+# @param groups_conf_dir
+# @param include_slurm_groups
+# @param default_group_source
+# @param default_distant_workername
+# @param groupmembers
+# @param group_yaml
 
 class clustershell (
-  $fanout               = $clustershell::params::fanout,
-  $connect_timeout      = $clustershell::params::connect_timeout,
-  $command_timeout      = $clustershell::params::command_timeout,
-  $color                = $clustershell::params::color,
-  $fd_max               = $clustershell::params::fd_max,
-  $history_size         = $clustershell::params::history_size,
-  $node_count           = $clustershell::params::node_count,
-  $verbosity            = $clustershell::params::verbosity,
-  Boolean $ssh_enable   = $clustershell::params::ssh_enable,
-  $ssh_user             = $clustershell::params::ssh_user,
-  $ssh_path             = $clustershell::params::ssh_path,
-  $ssh_options          = $clustershell::params::ssh_options,
-  $ensure               = $clustershell::params::ensure,
-  $package_name         = $clustershell::params::package_name,
+  $fanout               = 64,
+  $connect_timeout      = 15,
+  $command_timeout      = 0,
+  $color                = 'auto',
+  $fd_max               = 8192,
+  $history_size         = 100,
+  $node_count           = 'yes',
+  $verbosity            = '1',
+  Boolean $ssh_enable   = false,
+  $ssh_user             = undef,
+  $ssh_path             = 'ssh',
+  $ssh_options          = '-oStrictHostKeyChecking=no',
+  $ensure               = 'present',
+  $package_name         = 'clustershell',
+  Optional[String] $package_ensure = undef,
   $manage_epel          = true,
-  Boolean $install_vim_syntax = $clustershell::params::install_vim_syntax,
-  $vim_package_name     = $clustershell::params::vim_package_name,
-  $clush_conf_dir       = $clustershell::params::clush_conf_dir,
-  $clush_conf           = $clustershell::params::clush_conf,
-  $clush_conf_template  = $clustershell::params::clush_conf_template,
-  $defaults_conf        = $clustershell::params::defaults_conf,
-  $defaults_conf_template = $clustershell::params::defaults_conf_template,
-  $groups_config        = $clustershell::params::groups_config,
-  $groups_concat_dir    = $clustershell::params::groups_concat_dir,
-  $groups_conf          = $clustershell::params::groups_conf,
-  $groups_conf_template = $clustershell::params::groups_conf_template,
-  $groups_auto_dir      = $clustershell::params::groups_auto_dir,
-  $groups_conf_dir      = $clustershell::params::groups_conf_dir,
+  $install_python       = false,
+  $python_package_name  = undef,
+  $conf_dir       = '/etc/clustershell',
+  $conf           = '/etc/clustershell/clush.conf',
+  $conf_template  = 'clustershell/clush.conf.erb',
+  $defaults_conf        = '/etc/clustershell/defaults.conf',
+  $defaults_conf_template = 'clustershell/defaults.conf.erb',
+  $groups_config        = '/etc/clustershell/groups.d/local.cfg',
+  $groups_concat_dir    = '/etc/clustershell/tmp',
+  $groups_conf          = '/etc/clustershell/groups.conf',
+  $groups_conf_template = 'clustershell/groups.conf.erb',
+  $groups_auto_dir      = '/etc/clustershell/groups.d',
+  $groups_conf_dir      = '/etc/clustershell/groups.conf.d',
   Boolean $include_slurm_groups = false,
   $default_group_source = 'local',
   $default_distant_workername = 'ssh',
-  Hash $groupmembers         = $clustershell::params::groupmembers,
+  Hash $groupmembers         = {},
   $group_yaml           = {},
-) inherits clustershell::params {
+) {
 
-  case $ensure {
-    /(present)/: {
-      $package_ensure = 'present'
-    }
-    /(absent)/: {
-      $package_ensure = 'absent'
-    }
-    default: {
-      fail('ensure parameter must be present or absent')
-    }
+  if $ensure == 'absent' {
+    $_package_ensure = pick($package_ensure, 'absent')
+  } else {
+    $_package_ensure = pick($package_ensure, 'present')
   }
 
-  case $::osfamily {
-    'RedHat': {
-      if $manage_epel {
-        include ::epel
-        $package_require = Yumrepo['epel']
-      } else {
-        $package_require = undef
-      }
-    }
-    default: {
+  if dig($facts, 'os', 'family') == 'RedHat' {
+    if $manage_epel {
+      include ::epel
+      $package_require = Yumrepo['epel']
+    } else {
       $package_require = undef
     }
+  } else {
+    $package_require = undef
   }
 
   package { 'clustershell':
-    ensure  => $package_ensure,
+    ensure  => $_package_ensure,
     name    => $package_name,
     require => $package_require,
   }
 
   # Might need to convert to class
-  if $install_vim_syntax {
-    package { 'vim-clustershell':
-      ensure  => $package_ensure,
-      name    => $vim_package_name,
-      require => $package_require,
+  if $install_python and $python_package_name {
+    package { 'python-clustershell':
+      ensure  => $_package_ensure,
+      name    => $python_package_name,
+      require => Package['clustershell'],
     }
   }
 
   file { '/etc/clustershell':
     ensure  => 'directory',
-    path    => $clush_conf_dir,
+    path    => $conf_dir,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
@@ -184,12 +116,11 @@ class clustershell (
   }
 
   file { '/etc/clustershell/groups.conf.d':
-    ensure  => 'directory',
-    path    => $groups_conf_dir,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    require => File['/etc/clustershell'],
+    ensure => 'directory',
+    path   => $groups_conf_dir,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
 
   file { '/etc/clustershell/groups.d':
@@ -200,43 +131,48 @@ class clustershell (
     mode    => '0755',
     purge   => true,
     recurse => true,
-    require => File['/etc/clustershell'],
   }
 
-  file { $clush_conf:
+  file { '/etc/clustershell/clush.conf':
     ensure  => 'file',
+    path    => $conf,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
     require => File['/etc/clustershell'],
-    content => template($clush_conf_template),
+    content => template($conf_template),
   }
 
-  file { $defaults_conf:
+  file { '/etc/clustershell/defaults.conf':
     ensure  => 'file',
+    path    => $defaults_conf,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
     content => template($defaults_conf_template),
   }
 
-  file { $groups_conf:
+  file { '/etc/clustershell/groups.conf':
     ensure  => 'file',
+    path    => $groups_conf,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require => File['/etc/clustershell'],
     content => template($groups_conf_template),
   }
 
-  datacat { 'clustershell-groups':
-    ensure   => 'present',
-    path     => $groups_config,
-    owner    => 'root',
-    group    => 'root',
-    mode     => '0644',
-    template => 'clustershell/groups.erb',
-    require  => File['/etc/clustershell'],
+  concat { '/etc/clustershell/groups.d/local.cfg':
+    ensure  => 'present',
+    path    => $groups_config,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => File['/etc/clustershell/groups.d'],
+  }
+  concat::fragment { 'clustershell-groups.header':
+    target  => '/etc/clustershell/groups.d/local.cfg',
+    content => "### File managed by Puppet\n",
+    order   => '01',
   }
 
   create_resources('clustershell::groupmember', $groupmembers)

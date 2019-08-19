@@ -1,4 +1,7 @@
-# See README.md for details
+# @param ensure
+# @param data
+# @param source
+# @param content
 define clustershell::group_yaml (
   $ensure   = 'present',
   $data     = {},
