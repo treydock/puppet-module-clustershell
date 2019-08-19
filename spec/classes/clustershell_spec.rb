@@ -106,6 +106,24 @@ describe 'clustershell' do
                                                                           reverse: 'sinfo -h -N -o "%P" -n $NODE')
         end
       end
+
+      context 'when group_yaml defined' do
+        let(:params) do
+          {
+            group_yaml: {
+              'nodes' => {
+                'data' => {
+                  'roles' => {
+                    'compute' => 'compute[01-04]',
+                  },
+                },
+              },
+            },
+          }
+        end
+
+        it { is_expected.to contain_clustershell__group_yaml('nodes') }
+      end
     end
   end
 end

@@ -38,40 +38,40 @@
 # @param group_yaml
 
 class clustershell (
-  $fanout               = 64,
-  $connect_timeout      = 15,
-  $command_timeout      = 0,
-  $color                = 'auto',
-  $fd_max               = 8192,
-  $history_size         = 100,
-  $node_count           = 'yes',
-  $verbosity            = '1',
+  Integer $fanout = 64,
+  Integer $connect_timeout = 15,
+  Integer $command_timeout = 0,
+  String $color = 'auto',
+  Integer $fd_max = 8192,
+  Integer $history_size = 100,
+  String $node_count = 'yes',
+  String $verbosity = '1',
   Boolean $ssh_enable   = false,
-  $ssh_user             = undef,
-  $ssh_path             = 'ssh',
-  $ssh_options          = '-oStrictHostKeyChecking=no',
-  $ensure               = 'present',
-  $package_name         = 'clustershell',
+  Optional[String] $ssh_user = undef,
+  String $ssh_path = 'ssh',
+  String $ssh_options = '-oStrictHostKeyChecking=no',
+  Enum['present','absent'] $ensure = 'present',
+  String $package_name = 'clustershell',
   Optional[String] $package_ensure = undef,
-  $manage_epel          = true,
-  $install_python       = false,
-  $python_package_name  = undef,
-  $conf_dir       = '/etc/clustershell',
-  $conf           = '/etc/clustershell/clush.conf',
+  Boolean $manage_epel = true,
+  Boolean $install_python = false,
+  Optional[String] $python_package_name = undef,
+  Stdlib::Absolutepath $conf_dir = '/etc/clustershell',
+  Stdlib::Absolutepath $conf = '/etc/clustershell/clush.conf',
   $conf_template  = 'clustershell/clush.conf.erb',
-  $defaults_conf        = '/etc/clustershell/defaults.conf',
+  Stdlib::Absolutepath $defaults_conf = '/etc/clustershell/defaults.conf',
   $defaults_conf_template = 'clustershell/defaults.conf.erb',
-  $groups_config        = '/etc/clustershell/groups.d/local.cfg',
-  $groups_concat_dir    = '/etc/clustershell/tmp',
-  $groups_conf          = '/etc/clustershell/groups.conf',
+  Stdlib::Absolutepath $groups_config = '/etc/clustershell/groups.d/local.cfg',
+  Stdlib::Absolutepath $groups_concat_dir = '/etc/clustershell/tmp',
+  Stdlib::Absolutepath $groups_conf = '/etc/clustershell/groups.conf',
   $groups_conf_template = 'clustershell/groups.conf.erb',
-  $groups_auto_dir      = '/etc/clustershell/groups.d',
-  $groups_conf_dir      = '/etc/clustershell/groups.conf.d',
+  Stdlib::Absolutepath $groups_auto_dir = '/etc/clustershell/groups.d',
+  Stdlib::Absolutepath $groups_conf_dir = '/etc/clustershell/groups.conf.d',
   Boolean $include_slurm_groups = false,
-  $default_group_source = 'local',
-  $default_distant_workername = 'ssh',
-  Hash $groupmembers         = {},
-  $group_yaml           = {},
+  String $default_group_source = 'local',
+  String $default_distant_workername = 'ssh',
+  Hash $groupmembers = {},
+  Hash $group_yaml = {},
 ) {
 
   if $ensure == 'absent' {
@@ -175,8 +175,12 @@ class clustershell (
     order   => '01',
   }
 
-  create_resources('clustershell::groupmember', $groupmembers)
-  create_resources('clustershell::group_yaml', $group_yaml)
+  $groupmembers.each |$name, $data| {
+    clustershell::groupmember { $name: * => $data }
+  }
+  $group_yaml.each |$name, $data| {
+    clustershell::group_yaml { $name: * => $data }
+  }
 
   if $include_slurm_groups {
     clustershell::group_source { 'slurm':

@@ -5,12 +5,12 @@
 # @param reverse
 # @param section
 define clustershell::group_source (
-  $map,
-  $ensure   = 'present',
-  $all      = 'UNSET',
-  $list     = 'UNSET',
-  $reverse  = 'UNSET',
-  $section  = $name,
+  String $map,
+  Enum['present','absent','file'] $ensure = 'present',
+  String $all = 'UNSET',
+  String $list = 'UNSET',
+  String $reverse = 'UNSET',
+  String $section = $name,
 ) {
 
   include ::clustershell
