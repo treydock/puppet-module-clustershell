@@ -1,9 +1,26 @@
+# @summary Define group sources
+#
+# @example
+#   clustershell::group_source { 'slurm':
+#      ensure  => 'present',
+#      map     => 'sinfo -h -o "%N" -p $GROUP',
+#      all     => 'sinfo -h -o "%N"',
+#      list    => 'sinfo -h -o "%P"',
+#      reverse => 'sinfo -h -N -o "%P" -n $NODE',
+#    }
+#
 # @param map
+#   map command
 # @param ensure
+#   Ensure property
 # @param all
+#   all command
 # @param list
+#   list command
 # @param reverse
+#   reverse command
 # @param section
+#   Name of section for group source
 define clustershell::group_source (
   String $map,
   Enum['present','absent','file'] $ensure = 'present',

@@ -1,154 +1,95 @@
-# Puppet module for managing ClusterShell
+# puppet-module-clustershell
 
-## Overview
+[![Puppet Forge](http://img.shields.io/puppetforge/v/treydock/clustershell.svg)](https://forge.puppetlabs.com/treydock/clustershell)
+[![Build Status](https://travis-ci.org/treydock/puppet-module-clustershell.png)](https://travis-ci.org/treydock/puppet-module-clustershell)
 
-Installs and configures ClusterShell
+#### Table of Contents
+
+1. [Description](#description)
+2. [Setup - The basics of getting started with clustershell](#setup)
+    * [What clustershell affects](#what-clustershell-affects)
+    * [Setup requirements](#setup-requirements)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - Module reference](#reference)
+
+
+## Description
+
+This module will manage [ClusterShell](https://clustershell.readthedocs.io/en/latest/)
+
+## Setup
+
+### What clustershell affects
+
+This module will install the clustershell packages and manage the clustershell configs.
+
+### Setup Requirements
+
+For systems with `yum` package manager using Puppet >= 6.0 there is a dependency on [puppetlabs/yumrepo_core](https://forge.puppet.com/puppetlabs/yumrepo_core).
 
 ## Usage
 
-### clustershell
+Install clustershell and define groups in local.cfg:
 
-Install the vim syntax package and configure groups:
+```puppet
+class { '::clustershell':
+  groups => [
+    'compute: node[00-99]',
+    'login: login[01-02]',
+  ],
+}
+```
 
-    class { 'clustershell':
-      install_vim_syntax => true,
-      groups             => [
-        'hpc: node[00-99]',
-        'nfs: nfs1 nfs2 nfs3',
-      ],
+Define groups via YAML group files:
+
+```puppet
+class { '::clustershell':
+  group_yaml => {
+    'cluster' => {
+      'data'  => {
+        'local' => {
+          'compute' => 'node[00-99]',
+          'login'   => 'login[01-02]',
+        }
+      }
     }
+  }
+}
+```
 
-### clustershell::group_source
+Defining group YAML files via defined type:
 
-Example which is used if clustershell `include_slurm_groups` is true.
-
-    clustershell::group_source { 'slurm':
-      ensure  => $ensure,
-      map     => 'sinfo -h -o "%N" -p $GROUP',
-      all     => 'sinfo -h -o "%N"',
-      list    => 'sinfo -h -o "%P"',
-      reverse => 'sinfo -h -N -o "%P" -n $NODE',
+```puppet
+::clustershell::group_yaml { 'cluster':
+  data => {
+    'local' => {
+      'compute' => 'node[00-99]',
+      'login'   => 'login[01-02]',
     }
+  }
+}
+```
+
+Can also supply custom templates to `clustershell::group_yaml`
+
+```puppet
+::clustershell::group_yaml { 'cluster':
+  content => template('profile/clustershell/cluster.yaml.erb'),
+}
+```
+
+Example of defining custom group source:
+
+```puppet
+::clustershell::group_source { 'batch':
+  ensure  => 'present',
+  section => 'job,moabrsv',
+  map     => 'clustershell-batch-mapper.py $SOURCE map $GROUP',
+  list    => 'clustershell-batch-mapper.py $SOURCE list',
+}
+```
 
 
 ## Reference
 
-### Classes
-
-#### Public classes
-
-* `clustershell`: Installs and configures clustershell
-
-#### Private classes
-
-* `clustershell::params`: Defines default parameter values
-
-#### clustershell
-
-#####`groups`
-
-An array of groups used by clustershell programs.
-
-#####`fanout`
-
-The clush.conf `fanout` value.  Default is 64.
-
-#####`connect_timeout`
-
-The clush.conf `connect_timeout` value.  Default is 15
-
-#####`command_timeout`
-
-The clush.conf `command_timeout` value.  Default is 0
-
-#####`color`
-
-The clush.conf `color` value.  Default is 'auto'
-
-#####`fd_max`
-
-The clush.conf `fd_max` value.  Default is 16384
-
-#####`history_size`
-
-The clush.conf `history_size` value.  Default is 100
-
-#####`node_count`
-
-The clush.conf `node_count` value.  Default is 'yes'
-
-#####`verbosity`
-
-The clush.conf `verbosity` value.  Default is '1'
-
-#####`ssh_enable`
-
-Controls whether or not clush uses SSH settings from the config.  Default is false
-
-#####`ssh_user`
-
-The user to use with SSH.  Default is 'root'
-
-#####`ssh_path`
-
-The path to the SSH client.  Default is '/usr/bin/ssh'
-
-#####`ssh_options`
-
-Command line options to pass to the SSH client.  Default is '-oStrictHostKeyChecking=no'
-
-#####`ensure`
-
-Ensure if present or absent.  Default is 'present'
-
-#####`package_require`
-
-Resource required to install the clustershell package.  Default is OS dependent.
-
-#####`package_name`
-
-clustershell package name.  Default is OS dependent.
-
-#####`install_vim_syntax`
-
-Whether or not to install the VIM package for syntax highlighting.  Default is false.
-
-#####`vim_package_name`
-
-Name of the package for VIM syntax highlighting.  Default is OS dependent.
-
-#####`clush_conf_dir`
-
-Directory for clustershell configs.  Default is OS dependent.
-
-#####`clush_conf`
-
-Path to clush.conf.  Default is OS dependent.
-
-#####`clush_conf_template`
-
-Path to clush.conf Puppet template.  Default is 'clustershell/clush.conf.erb'.
-
-#####`groups_config`
-
-Path to groups config file.  Default is OS dependent.
-
-#####`groups_template`
-
-Path to groups Puppet template.  Default is 'clustershell/groups.erb'.
-
-#####`groups_conf`
-
-Path to groups.conf.  Default is OS dependent.
-
-#####`groups_conf_template`
-
-Path to groups.conf Puppet template.  Default is 'clustershell/groups.conf.erb'.
-
-#####`groups_dir`
-
-Path to groups.conf.d.  Default is OS dependent.
-
-#####`include_slurm_groups`
-
-Determines if the slurm groups should be included.  Default is false.
+[http://treydock.github.io/puppet-module-clustershell/](http://treydock.github.io/puppet-module-clustershell/)
