@@ -3,10 +3,10 @@
 # @param source
 # @param content
 define clustershell::group_yaml (
-  $ensure   = 'present',
-  $data     = {},
-  $source   = undef,
-  $content  = undef,
+  Enum['present','absent','file'] $ensure = 'present',
+  Hash $data = {},
+  Optional[String] $source = undef,
+  Optional[String] $content = undef,
 ) {
 
   include ::clustershell

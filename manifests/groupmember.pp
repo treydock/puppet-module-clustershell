@@ -1,7 +1,7 @@
 # @param group
 # @param member
 define clustershell::groupmember (
-  $group,
+  String $group,
   Variant[Array, String] $member = $title,
 ) {
 

@@ -7,6 +7,9 @@
   "source": "https://github.com/treydock/puppet-module-clustershell",
   "project_page": "https://github.com/treydock/puppet-module-clustershell",
   "issues_url": "https://github.com/treydock/puppet-module-clustershell/issues",
+  "tags": [
+      "hpc","nodeset","clush"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
