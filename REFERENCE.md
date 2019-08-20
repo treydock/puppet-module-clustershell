@@ -295,6 +295,22 @@ Hash of resources to pass to clustershell::group_yaml
 
 Default value: {}
 
+##### `include_genders_groups`
+
+Data type: `Boolean`
+
+Include genders group source
+
+Default value: `false`
+
+##### `manage_genders`
+
+Data type: `Boolean`
+
+Manage genders class when including genders group source
+
+Default value: `true`
+
 ## Defined types
 
 ### clustershell::group_source
