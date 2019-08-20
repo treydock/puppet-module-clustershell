@@ -69,6 +69,10 @@
 #   Hash of resources to pass to clustershell::groupmember
 # @param group_yaml
 #   Hash of resources to pass to clustershell::group_yaml
+# @param include_genders_groups
+#   Include genders group source
+# @param manage_genders
+#   Manage genders class when including genders group source
 class clustershell (
   Integer $fanout = 64,
   Integer $connect_timeout = 15,
@@ -103,6 +107,8 @@ class clustershell (
   String $default_distant_workername = 'ssh',
   Hash $groupmembers = {},
   Hash $group_yaml = {},
+  Boolean $include_genders_groups = false,
+  Boolean $manage_genders = true,
 ) {
 
   if $ensure == 'absent' {
@@ -220,6 +226,19 @@ class clustershell (
       all     => 'sinfo -h -o "%N"',
       list    => 'sinfo -h -o "%P"',
       reverse => 'sinfo -h -N -o "%P" -n $NODE',
+    }
+  }
+
+  if $include_genders_groups {
+    if $manage_genders {
+      include ::genders
+      Class['genders'] -> Clustershell::Group_source['genders']
+    }
+    clustershell::group_source { 'genders':
+      ensure => $ensure,
+      map    => 'nodeattr -n $GROUP',
+      all    => 'nodeattr -n -A',
+      list   => 'nodeattr -l',
     }
   }
 }

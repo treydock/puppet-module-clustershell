@@ -97,6 +97,7 @@ describe 'clustershell' do
       end
 
       it { is_expected.not_to contain_clustershell__group_source('slurm') }
+      it { is_expected.not_to contain_clustershell__group_source('genders') }
 
       context 'when include_slurm_groups => true' do
         let(:params) { { include_slurm_groups: true } }
@@ -126,6 +127,13 @@ describe 'clustershell' do
         end
 
         it { is_expected.to contain_clustershell__group_yaml('nodes') }
+      end
+
+      context 'when include_genders_groups => true' do
+        let(:params) { { include_genders_groups: true } }
+
+        it { is_expected.to contain_class('genders').that_comes_before('Clustershell::Group_source[genders]') }
+        it { is_expected.to contain_clustershell__group_source('genders') }
       end
     end
   end
