@@ -690,6 +690,42 @@ systems</p>
       
     </li>
   
+    <li>
+      
+        <span class='name'>include_genders_groups</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Include genders group source</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>manage_genders</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Manage genders class when including genders group source</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 
@@ -700,10 +736,6 @@ systems</p>
         <pre class="lines">
 
 
-72
-73
-74
-75
 76
 77
 78
@@ -853,10 +885,29 @@ systems</p>
 222
 223
 224
-225</pre>
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 72</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 76</span>
 
 class clustershell (
   Integer $fanout = 64,
@@ -892,6 +943,8 @@ class clustershell (
   String $default_distant_workername = &#39;ssh&#39;,
   Hash $groupmembers = {},
   Hash $group_yaml = {},
+  Boolean $include_genders_groups = false,
+  Boolean $manage_genders = true,
 ) {
 
   if $ensure == &#39;absent&#39; {
@@ -1009,6 +1062,19 @@ class clustershell (
       all     =&gt; &#39;sinfo -h -o &quot;%N&quot;&#39;,
       list    =&gt; &#39;sinfo -h -o &quot;%P&quot;&#39;,
       reverse =&gt; &#39;sinfo -h -N -o &quot;%P&quot; -n $NODE&#39;,
+    }
+  }
+
+  if $include_genders_groups {
+    if $manage_genders {
+      include ::genders
+      Class[&#39;genders&#39;] -&gt; Clustershell::Group_source[&#39;genders&#39;]
+    }
+    clustershell::group_source { &#39;genders&#39;:
+      ensure =&gt; $ensure,
+      map    =&gt; &#39;nodeattr -n $GROUP&#39;,
+      all    =&gt; &#39;nodeattr -n -A&#39;,
+      list   =&gt; &#39;nodeattr -l&#39;,
     }
   }
 }</pre>

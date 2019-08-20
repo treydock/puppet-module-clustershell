@@ -101,6 +101,9 @@ clustershell configs.</p>
 there is a dependency on <a
 href="https://forge.puppet.com/puppetlabs/yumrepo_core">puppetlabs/yumrepo_core</a>.</p>
 
+<p>If genders support is enabled there is a soft dependency on <a
+href="https://forge.puppet.com/treydock/genders">treydock/genders</a></p>
+
 <h2 id="label-Usage">Usage</h2>
 
 <p>Install clustershell and define groups in local.cfg:</p>
@@ -110,6 +113,22 @@ href="https://forge.puppet.com/puppetlabs/yumrepo_core">puppetlabs/yumrepo_core<
     &#39;compute: node[00-99]&#39;,
     &#39;login: login[01-02]&#39;,
   ],
+}
+</code></pre>
+
+<p>Enable SLURM groups and make them the default:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;::clustershell&#39;:
+  default_group_source =&gt; &#39;slurm&#39;,
+  include_slurm_groups =&gt; true,
+}
+</code></pre>
+
+<p>Enable genders groups and make them the default:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;::clustershell&#39;:
+  default_group_source   =&gt; &#39;genders&#39;,
+  include_genders_groups =&gt; true,
 }
 </code></pre>
 
