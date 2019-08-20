@@ -27,6 +27,8 @@ This module will install the clustershell packages and manage the clustershell c
 
 For systems with `yum` package manager using Puppet >= 6.0 there is a dependency on [puppetlabs/yumrepo_core](https://forge.puppet.com/puppetlabs/yumrepo_core).
 
+If genders support is enabled there is a soft dependency on [treydock/genders](https://forge.puppet.com/treydock/genders)
+
 ## Usage
 
 Install clustershell and define groups in local.cfg:
@@ -37,6 +39,24 @@ class { '::clustershell':
     'compute: node[00-99]',
     'login: login[01-02]',
   ],
+}
+```
+
+Enable SLURM groups and make them the default:
+
+```puppet
+class { '::clustershell':
+  default_group_source => 'slurm',
+  include_slurm_groups => true,
+}
+```
+
+Enable genders groups and make them the default:
+
+```puppet
+class { '::clustershell':
+  default_group_source   => 'genders',
+  include_genders_groups => true,
 }
 ```
 
