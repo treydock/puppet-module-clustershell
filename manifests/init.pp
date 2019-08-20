@@ -1,42 +1,74 @@
 # @summary Manage clustershell
 #
-#
+# @example
+#   include ::clustershell
 #
 # @param fanout
+#   Value for clush.conf fanout
 # @param connect_timeout
+#   Value for clush.conf connect_timeout
 # @param command_timeout
+#   Value for clush.conf command_timeout
 # @param color
+#   Value for clush.conf color
 # @param fd_max
+#   Value for clush.conf fd_max
 # @param history_size
+#   Value for clush.conf history_size
 # @param node_count
+#   Value for clush.conf node_count
 # @param verbosity
-# @param ssh_enable
+#   Value for clush.conf verbosity
 # @param ssh_user
+#   SSH user
 # @param ssh_path
+#   Path to SSH command
 # @param ssh_options
+#   SSH options
 # @param ensure
+#   Module ensure property
 # @param package_name
+#   clustershell package name
 # @param package_ensure
+#   The package ensure property, defaults based on `ensure` property
 # @param manage_epel
+#   Boolean that sets of EPEL module should be managed for Red Hat based systems
 # @param install_python
+#   Boolean that sets if python module should be installed
 # @param python_package_name
+#   Package name of python module, only applies to Red Hat based systems
 # @param conf_dir
+#   Path to clustershell configuration directory
 # @param conf
+#   Path to clush.conf
 # @param conf_template
+#   clush.conf template
 # @param defaults_conf
+#   Path to defaults.conf
 # @param defaults_conf_template
+#   defaults.conf template
 # @param groups_config
+#   path to local.cfg groups config file
 # @param groups_concat_dir
+#   groups concat directory
 # @param groups_conf
+#   path to groups.conf
 # @param groups_conf_template
+#   groups.conf template
 # @param groups_auto_dir
+#   path to groups auto directory
 # @param groups_conf_dir
+#   path to groups.conf.d
 # @param include_slurm_groups
+#   Boolean that sets if should include slurm groups
 # @param default_group_source
+#   The default group source
 # @param default_distant_workername
+#   The default remote command to use, usually `ssh` or `rsh`
 # @param groupmembers
+#   Hash of resources to pass to clustershell::groupmember
 # @param group_yaml
-
+#   Hash of resources to pass to clustershell::group_yaml
 class clustershell (
   Integer $fanout = 64,
   Integer $connect_timeout = 15,
@@ -46,7 +78,6 @@ class clustershell (
   Integer $history_size = 100,
   String $node_count = 'yes',
   String $verbosity = '1',
-  Boolean $ssh_enable   = false,
   Optional[String] $ssh_user = undef,
   String $ssh_path = 'ssh',
   String $ssh_options = '-oStrictHostKeyChecking=no',
