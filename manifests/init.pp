@@ -224,7 +224,7 @@ class clustershell (
       ensure  => $ensure,
       map     => 'sinfo -h -o "%N" -p $GROUP',
       all     => 'sinfo -h -o "%N"',
-      list    => 'sinfo -h -o "%P"',
+      list    => 'sinfo -h -o "%P" | sed \'s|*||g\'',
       reverse => 'sinfo -h -N -o "%P" -n $NODE',
     }
   }
