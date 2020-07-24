@@ -6,15 +6,15 @@
 <title>
   Puppet Class: clustershell
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::clustershell";
   relpath = '../';
 </script>
@@ -729,6 +729,7 @@ systems</p>
 </ul>
 
 
+
 </div><div class="method_details_list">
   <table class="source_code">
     <tr>
@@ -1060,7 +1061,7 @@ class clustershell (
       ensure  =&gt; $ensure,
       map     =&gt; &#39;sinfo -h -o &quot;%N&quot; -p $GROUP&#39;,
       all     =&gt; &#39;sinfo -h -o &quot;%N&quot;&#39;,
-      list    =&gt; &#39;sinfo -h -o &quot;%P&quot;&#39;,
+      list    =&gt; &#39;sinfo -h -o &quot;%P&quot; | sed \&#39;s|*||g\&#39;&#39;,
       reverse =&gt; &#39;sinfo -h -N -o &quot;%P&quot; -n $NODE&#39;,
     }
   }
