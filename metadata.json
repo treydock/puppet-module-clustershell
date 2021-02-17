@@ -1,6 +1,6 @@
 {
   "name": "treydock-clustershell",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "treydock",
   "summary": "clustershell Puppet module",
   "license": "Apache-2.0",
