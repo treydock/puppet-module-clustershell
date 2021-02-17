@@ -16,7 +16,7 @@
 
 ## Classes
 
-### `clustershell`
+### <a name="clustershell"></a>`clustershell`
 
 Manage clustershell
 
@@ -30,9 +30,45 @@ include ::clustershell
 
 #### Parameters
 
-The following parameters are available in the `clustershell` class.
+The following parameters are available in the `clustershell` class:
 
-##### `fanout`
+* [`fanout`](#fanout)
+* [`connect_timeout`](#connect_timeout)
+* [`command_timeout`](#command_timeout)
+* [`color`](#color)
+* [`fd_max`](#fd_max)
+* [`history_size`](#history_size)
+* [`node_count`](#node_count)
+* [`verbosity`](#verbosity)
+* [`ssh_user`](#ssh_user)
+* [`ssh_path`](#ssh_path)
+* [`ssh_options`](#ssh_options)
+* [`ensure`](#ensure)
+* [`package_name`](#package_name)
+* [`package_ensure`](#package_ensure)
+* [`manage_epel`](#manage_epel)
+* [`install_python`](#install_python)
+* [`python_package_name`](#python_package_name)
+* [`conf_dir`](#conf_dir)
+* [`conf`](#conf)
+* [`conf_template`](#conf_template)
+* [`defaults_conf`](#defaults_conf)
+* [`defaults_conf_template`](#defaults_conf_template)
+* [`groups_config`](#groups_config)
+* [`groups_concat_dir`](#groups_concat_dir)
+* [`groups_conf`](#groups_conf)
+* [`groups_conf_template`](#groups_conf_template)
+* [`groups_auto_dir`](#groups_auto_dir)
+* [`groups_conf_dir`](#groups_conf_dir)
+* [`include_slurm_groups`](#include_slurm_groups)
+* [`default_group_source`](#default_group_source)
+* [`default_distant_workername`](#default_distant_workername)
+* [`groupmembers`](#groupmembers)
+* [`group_yaml`](#group_yaml)
+* [`include_genders_groups`](#include_genders_groups)
+* [`manage_genders`](#manage_genders)
+
+##### <a name="fanout"></a>`fanout`
 
 Data type: `Integer`
 
@@ -40,7 +76,7 @@ Value for clush.conf fanout
 
 Default value: `64`
 
-##### `connect_timeout`
+##### <a name="connect_timeout"></a>`connect_timeout`
 
 Data type: `Integer`
 
@@ -48,7 +84,7 @@ Value for clush.conf connect_timeout
 
 Default value: `15`
 
-##### `command_timeout`
+##### <a name="command_timeout"></a>`command_timeout`
 
 Data type: `Integer`
 
@@ -56,7 +92,7 @@ Value for clush.conf command_timeout
 
 Default value: `0`
 
-##### `color`
+##### <a name="color"></a>`color`
 
 Data type: `String`
 
@@ -64,7 +100,7 @@ Value for clush.conf color
 
 Default value: `'auto'`
 
-##### `fd_max`
+##### <a name="fd_max"></a>`fd_max`
 
 Data type: `Integer`
 
@@ -72,7 +108,7 @@ Value for clush.conf fd_max
 
 Default value: `8192`
 
-##### `history_size`
+##### <a name="history_size"></a>`history_size`
 
 Data type: `Integer`
 
@@ -80,7 +116,7 @@ Value for clush.conf history_size
 
 Default value: `100`
 
-##### `node_count`
+##### <a name="node_count"></a>`node_count`
 
 Data type: `String`
 
@@ -88,7 +124,7 @@ Value for clush.conf node_count
 
 Default value: `'yes'`
 
-##### `verbosity`
+##### <a name="verbosity"></a>`verbosity`
 
 Data type: `String`
 
@@ -96,7 +132,7 @@ Value for clush.conf verbosity
 
 Default value: `'1'`
 
-##### `ssh_user`
+##### <a name="ssh_user"></a>`ssh_user`
 
 Data type: `Optional[String]`
 
@@ -104,7 +140,7 @@ SSH user
 
 Default value: ``undef``
 
-##### `ssh_path`
+##### <a name="ssh_path"></a>`ssh_path`
 
 Data type: `String`
 
@@ -112,7 +148,7 @@ Path to SSH command
 
 Default value: `'ssh'`
 
-##### `ssh_options`
+##### <a name="ssh_options"></a>`ssh_options`
 
 Data type: `String`
 
@@ -120,7 +156,7 @@ SSH options
 
 Default value: `'-oStrictHostKeyChecking=no'`
 
-##### `ensure`
+##### <a name="ensure"></a>`ensure`
 
 Data type: `Enum['present','absent']`
 
@@ -128,7 +164,7 @@ Module ensure property
 
 Default value: `'present'`
 
-##### `package_name`
+##### <a name="package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -136,7 +172,7 @@ clustershell package name
 
 Default value: `'clustershell'`
 
-##### `package_ensure`
+##### <a name="package_ensure"></a>`package_ensure`
 
 Data type: `Optional[String]`
 
@@ -144,7 +180,7 @@ The package ensure property, defaults based on `ensure` property
 
 Default value: ``undef``
 
-##### `manage_epel`
+##### <a name="manage_epel"></a>`manage_epel`
 
 Data type: `Boolean`
 
@@ -152,7 +188,7 @@ Boolean that sets of EPEL module should be managed for Red Hat based systems
 
 Default value: ``true``
 
-##### `install_python`
+##### <a name="install_python"></a>`install_python`
 
 Data type: `Boolean`
 
@@ -160,7 +196,7 @@ Boolean that sets if python module should be installed
 
 Default value: ``false``
 
-##### `python_package_name`
+##### <a name="python_package_name"></a>`python_package_name`
 
 Data type: `Optional[String]`
 
@@ -168,7 +204,7 @@ Package name of python module, only applies to Red Hat based systems
 
 Default value: ``undef``
 
-##### `conf_dir`
+##### <a name="conf_dir"></a>`conf_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -176,7 +212,7 @@ Path to clustershell configuration directory
 
 Default value: `'/etc/clustershell'`
 
-##### `conf`
+##### <a name="conf"></a>`conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -184,7 +220,7 @@ Path to clush.conf
 
 Default value: `'/etc/clustershell/clush.conf'`
 
-##### `conf_template`
+##### <a name="conf_template"></a>`conf_template`
 
 Data type: `Any`
 
@@ -192,7 +228,7 @@ clush.conf template
 
 Default value: `'clustershell/clush.conf.erb'`
 
-##### `defaults_conf`
+##### <a name="defaults_conf"></a>`defaults_conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -200,7 +236,7 @@ Path to defaults.conf
 
 Default value: `'/etc/clustershell/defaults.conf'`
 
-##### `defaults_conf_template`
+##### <a name="defaults_conf_template"></a>`defaults_conf_template`
 
 Data type: `Any`
 
@@ -208,7 +244,7 @@ defaults.conf template
 
 Default value: `'clustershell/defaults.conf.erb'`
 
-##### `groups_config`
+##### <a name="groups_config"></a>`groups_config`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -216,7 +252,7 @@ path to local.cfg groups config file
 
 Default value: `'/etc/clustershell/groups.d/local.cfg'`
 
-##### `groups_concat_dir`
+##### <a name="groups_concat_dir"></a>`groups_concat_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -224,7 +260,7 @@ groups concat directory
 
 Default value: `'/etc/clustershell/tmp'`
 
-##### `groups_conf`
+##### <a name="groups_conf"></a>`groups_conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -232,7 +268,7 @@ path to groups.conf
 
 Default value: `'/etc/clustershell/groups.conf'`
 
-##### `groups_conf_template`
+##### <a name="groups_conf_template"></a>`groups_conf_template`
 
 Data type: `Any`
 
@@ -240,7 +276,7 @@ groups.conf template
 
 Default value: `'clustershell/groups.conf.erb'`
 
-##### `groups_auto_dir`
+##### <a name="groups_auto_dir"></a>`groups_auto_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -248,7 +284,7 @@ path to groups auto directory
 
 Default value: `'/etc/clustershell/groups.d'`
 
-##### `groups_conf_dir`
+##### <a name="groups_conf_dir"></a>`groups_conf_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -256,7 +292,7 @@ path to groups.conf.d
 
 Default value: `'/etc/clustershell/groups.conf.d'`
 
-##### `include_slurm_groups`
+##### <a name="include_slurm_groups"></a>`include_slurm_groups`
 
 Data type: `Boolean`
 
@@ -264,7 +300,7 @@ Boolean that sets if should include slurm groups
 
 Default value: ``false``
 
-##### `default_group_source`
+##### <a name="default_group_source"></a>`default_group_source`
 
 Data type: `String`
 
@@ -272,7 +308,7 @@ The default group source
 
 Default value: `'local'`
 
-##### `default_distant_workername`
+##### <a name="default_distant_workername"></a>`default_distant_workername`
 
 Data type: `String`
 
@@ -280,7 +316,7 @@ The default remote command to use, usually `ssh` or `rsh`
 
 Default value: `'ssh'`
 
-##### `groupmembers`
+##### <a name="groupmembers"></a>`groupmembers`
 
 Data type: `Hash`
 
@@ -288,7 +324,7 @@ Hash of resources to pass to clustershell::groupmember
 
 Default value: `{}`
 
-##### `group_yaml`
+##### <a name="group_yaml"></a>`group_yaml`
 
 Data type: `Hash`
 
@@ -296,7 +332,7 @@ Hash of resources to pass to clustershell::group_yaml
 
 Default value: `{}`
 
-##### `include_genders_groups`
+##### <a name="include_genders_groups"></a>`include_genders_groups`
 
 Data type: `Boolean`
 
@@ -304,7 +340,7 @@ Include genders group source
 
 Default value: ``false``
 
-##### `manage_genders`
+##### <a name="manage_genders"></a>`manage_genders`
 
 Data type: `Boolean`
 
@@ -314,7 +350,7 @@ Default value: ``true``
 
 ## Defined types
 
-### `clustershell::group_source`
+### <a name="clustershellgroup_source"></a>`clustershell::group_source`
 
 Define group sources
 
@@ -334,15 +370,22 @@ clustershell::group_source { 'slurm':
 
 #### Parameters
 
-The following parameters are available in the `clustershell::group_source` defined type.
+The following parameters are available in the `clustershell::group_source` defined type:
 
-##### `map`
+* [`map`](#map)
+* [`ensure`](#ensure)
+* [`all`](#all)
+* [`list`](#list)
+* [`reverse`](#reverse)
+* [`section`](#section)
+
+##### <a name="map"></a>`map`
 
 Data type: `String`
 
 map command
 
-##### `ensure`
+##### <a name="ensure"></a>`ensure`
 
 Data type: `Enum['present','absent','file']`
 
@@ -350,7 +393,7 @@ Ensure property
 
 Default value: `'present'`
 
-##### `all`
+##### <a name="all"></a>`all`
 
 Data type: `String`
 
@@ -358,7 +401,7 @@ all command
 
 Default value: `'UNSET'`
 
-##### `list`
+##### <a name="list"></a>`list`
 
 Data type: `String`
 
@@ -366,7 +409,7 @@ list command
 
 Default value: `'UNSET'`
 
-##### `reverse`
+##### <a name="reverse"></a>`reverse`
 
 Data type: `String`
 
@@ -374,7 +417,7 @@ reverse command
 
 Default value: `'UNSET'`
 
-##### `section`
+##### <a name="section"></a>`section`
 
 Data type: `String`
 
@@ -382,7 +425,7 @@ Name of section for group source
 
 Default value: `$name`
 
-### `clustershell::group_yaml`
+### <a name="clustershellgroup_yaml"></a>`clustershell::group_yaml`
 
 Manage a group yaml file
 
@@ -403,9 +446,14 @@ clustershell::group_yaml { 'roles':
 
 #### Parameters
 
-The following parameters are available in the `clustershell::group_yaml` defined type.
+The following parameters are available in the `clustershell::group_yaml` defined type:
 
-##### `ensure`
+* [`ensure`](#ensure)
+* [`data`](#data)
+* [`source`](#source)
+* [`content`](#content)
+
+##### <a name="ensure"></a>`ensure`
 
 Data type: `Enum['present','absent','file']`
 
@@ -413,7 +461,7 @@ File ensure property
 
 Default value: `'present'`
 
-##### `data`
+##### <a name="data"></a>`data`
 
 Data type: `Hash`
 
@@ -421,7 +469,7 @@ The data to use in defining the YAML groups
 
 Default value: `{}`
 
-##### `source`
+##### <a name="source"></a>`source`
 
 Data type: `Optional[String]`
 
@@ -429,7 +477,7 @@ Source that can be used to define the YAML file
 
 Default value: ``undef``
 
-##### `content`
+##### <a name="content"></a>`content`
 
 Data type: `Optional[String]`
 
@@ -437,7 +485,7 @@ Content that can override this module's template for this YAML file
 
 Default value: ``undef``
 
-### `clustershell::groupmember`
+### <a name="clustershellgroupmember"></a>`clustershell::groupmember`
 
 Manage local.cfg group members
 
@@ -454,15 +502,18 @@ clustershell::groupmember { 'compute':
 
 #### Parameters
 
-The following parameters are available in the `clustershell::groupmember` defined type.
+The following parameters are available in the `clustershell::groupmember` defined type:
 
-##### `group`
+* [`group`](#group)
+* [`member`](#member)
+
+##### <a name="group"></a>`group`
 
 Data type: `String`
 
 Name of the group
 
-##### `member`
+##### <a name="member"></a>`member`
 
 Data type: `Variant[Array, String]`
 
