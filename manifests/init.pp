@@ -222,10 +222,10 @@ class clustershell (
   if $include_slurm_groups {
     clustershell::group_source { 'slurm':
       ensure  => $ensure,
-      map     => 'sinfo -h -o "%N" -p $GROUP',
-      all     => 'sinfo -h -o "%N"',
-      list    => 'sinfo -h -o "%P" | sed \'s|*||g\'',
-      reverse => 'sinfo -h -N -o "%P" -n $NODE',
+      map     => 'sinfo -a -h -o "%N" -p $GROUP',
+      all     => 'sinfo -a -h -o "%N"',
+      list    => 'sinfo -a -h -o "%P" | sed \'s|*||g\'',
+      reverse => 'sinfo -a -h -N -o "%P" -n $NODE',
     }
   }
 

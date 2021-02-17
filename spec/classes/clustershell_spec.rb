@@ -104,10 +104,10 @@ describe 'clustershell' do
 
         it do
           is_expected.to contain_clustershell__group_source('slurm').with(ensure: 'present',
-                                                                          map: 'sinfo -h -o "%N" -p $GROUP',
-                                                                          all: 'sinfo -h -o "%N"',
-                                                                          list: 'sinfo -h -o "%P" | sed \'s|*||g\'',
-                                                                          reverse: 'sinfo -h -N -o "%P" -n $NODE')
+                                                                          map: 'sinfo -a -h -o "%N" -p $GROUP',
+                                                                          all: 'sinfo -a -h -o "%N"',
+                                                                          list: 'sinfo -a -h -o "%P" | sed \'s|*||g\'',
+                                                                          reverse: 'sinfo -a -h -N -o "%P" -n $NODE')
         end
       end
 
