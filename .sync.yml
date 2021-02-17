@@ -3,16 +3,16 @@
   acceptance_matrix:
     set:
       - centos-7
-      - '---centos-8'
+      - centos-8
       - debian-9
+      - debian-10
       - ubuntu-1604
       - ubuntu-1804
-    puppet:
-      - puppet5
-      - puppet6
+      - ubuntu-2004
+  acceptance_excludes:
+    - set: ubuntu-2004
+      puppet: puppet5
 .gitlab-ci.yml:
   delete: true
 appveyor.yml:
-  delete: true
-spec/acceptance/nodesets/debian-10.yml:
   delete: true
