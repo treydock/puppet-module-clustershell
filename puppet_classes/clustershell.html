@@ -6,7 +6,7 @@
 <title>
   Puppet Class: clustershell
   
-    &mdash; Documentation by YARD 0.9.25
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
@@ -1059,10 +1059,10 @@ class clustershell (
   if $include_slurm_groups {
     clustershell::group_source { &#39;slurm&#39;:
       ensure  =&gt; $ensure,
-      map     =&gt; &#39;sinfo -h -o &quot;%N&quot; -p $GROUP&#39;,
-      all     =&gt; &#39;sinfo -h -o &quot;%N&quot;&#39;,
-      list    =&gt; &#39;sinfo -h -o &quot;%P&quot; | sed \&#39;s|*||g\&#39;&#39;,
-      reverse =&gt; &#39;sinfo -h -N -o &quot;%P&quot; -n $NODE&#39;,
+      map     =&gt; &#39;sinfo -a -h -o &quot;%N&quot; -p $GROUP&#39;,
+      all     =&gt; &#39;sinfo -a -h -o &quot;%N&quot;&#39;,
+      list    =&gt; &#39;sinfo -a -h -o &quot;%P&quot; | sed \&#39;s|*||g\&#39;&#39;,
+      reverse =&gt; &#39;sinfo -a -h -N -o &quot;%P&quot; -n $NODE&#39;,
     }
   }
 
