@@ -8,7 +8,7 @@ fixtures:
       repo: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
       puppet_version: ">= 6.0.0"
     epel:
-      repo: https://github.com/stahnma/puppet-module-epel.git
+      repo: https://github.com/voxpupuli/puppet-epel.git
     genders:
       repo: https://github.com/treydock/puppet-module-genders.git
   symlinks:
