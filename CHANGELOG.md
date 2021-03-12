@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.0.0](https://github.com/treydock/puppet-module-clustershell/tree/v1.0.0) (2021-03-12)
+
+[Full Changelog](https://github.com/treydock/puppet-module-clustershell/compare/v0.3.1...v1.0.0)
+
+### Changed
+
+- Drop Puppet 5 support [\#12](https://github.com/treydock/puppet-module-clustershell/pull/12) ([treydock](https://github.com/treydock))
+
+### Added
+
+- Support latest stdlib and conncat major versions [\#13](https://github.com/treydock/puppet-module-clustershell/pull/13) ([treydock](https://github.com/treydock))
+
+### Fixed
+
+- Ensure proper defaults for installing clustershell python [\#14](https://github.com/treydock/puppet-module-clustershell/pull/14) ([treydock](https://github.com/treydock))
+
 ## [v0.3.1](https://github.com/treydock/puppet-module-clustershell/tree/v0.3.1) (2021-02-17)
 
 [Full Changelog](https://github.com/treydock/puppet-module-clustershell/compare/v0.3.0...v0.3.1)
