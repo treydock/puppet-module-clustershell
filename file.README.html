@@ -109,11 +109,28 @@ href="https://forge.puppet.com/treydock/genders">treydock/genders</a></p>
 <p>Install clustershell and define groups in local.cfg:</p>
 
 <pre class="code ruby"><code class="ruby">class { &#39;::clustershell&#39;:
-  groups =&gt; [
-    &#39;compute: node[00-99]&#39;,
-    &#39;login: login[01-02]&#39;,
-  ],
+  groupmembers =&gt; {
+    compute =&gt; {
+      group  =&gt; &#39;compute&#39;,
+      member =&gt; &#39;node[00-99]&#39;,
+    }
+    login =&gt; {
+      group  =&gt; &#39;login&#39;,
+      member =&gt; &#39;login[01-02]&#39;,
+    }
+  },
 }
+</code></pre>
+
+<p>The equivalent in hiera would be:</p>
+
+<pre class="code ruby"><code class="ruby">clustershell::groupmembers:
+  compute:
+    group: &#39;compute&#39;
+    member: &#39;node[00-99]&#39;
+  login:
+    group: &#39;login&#39;
+    member: &#39;login[01-02]&#39;
 </code></pre>
 
 <p>Enable SLURM groups and make them the default:</p>
