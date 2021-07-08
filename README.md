@@ -35,11 +35,29 @@ Install clustershell and define groups in local.cfg:
 
 ```puppet
 class { '::clustershell':
-  groups => [
-    'compute: node[00-99]',
-    'login: login[01-02]',
-  ],
+  groupmembers => {
+    compute => {
+      group  => 'compute',
+      member => 'node[00-99]',
+    }
+    login => {
+      group  => 'login',
+      member => 'login[01-02]',
+    }
+  },
 }
+```
+
+The equivalent in hiera would be:
+
+```yaml
+clustershell::groupmembers:
+  compute:
+    group: 'compute'
+    member: 'node[00-99]'
+  login:
+    group: 'login'
+    member: 'login[01-02]'
 ```
 
 Enable SLURM groups and make them the default:
