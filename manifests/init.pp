@@ -90,7 +90,7 @@ class clustershell (
   Optional[String] $package_ensure = undef,
   Boolean $manage_epel = true,
   Boolean $install_python = false,
-  Optional[String] $python_package_name = undef,
+  String[1] $python_package_name = 'python3-clustershell',
   Stdlib::Absolutepath $conf_dir = '/etc/clustershell',
   Stdlib::Absolutepath $conf = '/etc/clustershell/clush.conf',
   String[1] $conf_template  = 'clustershell/clush.conf.erb',

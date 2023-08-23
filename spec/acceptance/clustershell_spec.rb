@@ -3,12 +3,12 @@
 require 'spec_helper_acceptance'
 
 describe 'clustershell class:' do
-  python = if fact('os.family') == 'RedHat' && fact('os.release.major').to_i == 8
-             'python3'
-           elsif fact('os.family') == 'Debian' && fact('os.release.major') == '20.04'
-             'python3'
-           else
+  python = if fact('os.family') == 'RedHat' && fact('os.release.major').to_i == 7
              'python'
+           elsif fact('os.name') == 'Debian' && fact('os.release.major').to_i == 10
+             'python'
+           else
+             'python3'
            end
 
   context 'with default parameters' do

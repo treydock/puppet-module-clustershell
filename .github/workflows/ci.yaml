@@ -50,8 +50,11 @@ jobs:
         set:
           - "el7"
           - "el8"
+          - "el9"
           - "debian-10"
+          - "debian-11"
           - "ubuntu-2004"
+          - "ubuntu-2204"
         puppet:
           - "puppet7"
           - "puppet8"

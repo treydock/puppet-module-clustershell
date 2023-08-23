@@ -1,2 +1,3 @@
 ---
 clustershell::package_name: clustershell
+clustershell::python_package_name: python3-clustershell
