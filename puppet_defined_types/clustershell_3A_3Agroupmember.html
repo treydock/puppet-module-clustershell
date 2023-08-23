@@ -6,7 +6,7 @@
 <title>
   Defined Type: clustershell::groupmember
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -78,6 +78,7 @@
     
   </div>
 </div>
+
 
 
 <div class="tags">
@@ -156,9 +157,7 @@
 26
 27
 28
-29
-30
-31</pre>
+29</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/groupmember.pp', line 13</span>
@@ -167,7 +166,6 @@ define clustershell::groupmember (
   String $group,
   Variant[Array, String] $member = $title,
 ) {
-
   if $member =~ String {
     $members = [$member]
   } else {
@@ -180,7 +178,6 @@ define clustershell::groupmember (
     content =&gt; &quot;${group}: ${_members}\n&quot;,
     order   =&gt; &#39;50&#39;,
   }
-
 }</pre>
       </td>
     </tr>

@@ -6,7 +6,7 @@
 <title>
   Defined Type: clustershell::group_source
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -78,6 +78,7 @@
     
   </div>
 </div>
+
 
 
 <div class="tags">
@@ -236,9 +237,7 @@
 42
 43
 44
-45
-46
-47</pre>
+45</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/group_source.pp', line 24</span>
@@ -251,10 +250,9 @@ define clustershell::group_source (
   String $reverse = &#39;UNSET&#39;,
   String $section = $name,
 ) {
+  include clustershell
 
-  include ::clustershell
-
-  $path = &quot;${::clustershell::groups_conf_dir}/${name}.conf&quot;
+  $path = &quot;${clustershell::groups_conf_dir}/${name}.conf&quot;
 
   file { &quot;clustershell::group_source ${name}&quot;:
     ensure  =&gt; $ensure,
@@ -265,7 +263,6 @@ define clustershell::group_source (
     content =&gt; template(&#39;clustershell/group_source.conf.erb&#39;),
     require =&gt; File[&#39;/etc/clustershell/groups.conf.d&#39;],
   }
-
 }</pre>
       </td>
     </tr>

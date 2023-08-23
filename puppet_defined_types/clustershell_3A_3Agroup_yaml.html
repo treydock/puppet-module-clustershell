@@ -6,7 +6,7 @@
 <title>
   Defined Type: clustershell::group_yaml
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -78,6 +78,7 @@
     
   </div>
 </div>
+
 
 
 <div class="tags">
@@ -207,9 +208,7 @@
 43
 44
 45
-46
-47
-48</pre>
+46</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/group_yaml.pp', line 21</span>
@@ -220,10 +219,9 @@ define clustershell::group_yaml (
   Optional[String] $source = undef,
   Optional[String] $content = undef,
 ) {
+  include clustershell
 
-  include ::clustershell
-
-  $path = &quot;${::clustershell::groups_auto_dir}/${name}.yaml&quot;
+  $path = &quot;${clustershell::groups_auto_dir}/${name}.yaml&quot;
 
   if ! $source and ! $content {
     $_content = template(&#39;clustershell/group_yaml.erb&#39;)
@@ -240,7 +238,6 @@ define clustershell::group_yaml (
     content =&gt; $_content,
     source  =&gt; $source,
   }
-
 }</pre>
       </td>
     </tr>

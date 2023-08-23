@@ -6,7 +6,7 @@
 <title>
   Puppet Class: clustershell
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -80,6 +80,7 @@
     
   </div>
 </div>
+
 
 
 <div class="tags">
@@ -359,8 +360,7 @@
       
         &mdash;
         <div class='inline'>
-<p>Boolean that sets of EPEL module should be managed for Red Hat based
-systems</p>
+<p>Boolean that sets of EPEL module should be managed for Red Hat based systems</p>
 </div>
       
     </li>
@@ -388,10 +388,10 @@ systems</p>
         <span class='name'>python_package_name</span>
       
       
-        <span class='type'>(<tt>Optional[String]</tt>)</span>
+        <span class='type'>(<tt>String[1]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
+        <em class="default">(defaults to: <tt>&#39;python3-clustershell&#39;</tt>)</em>
       
       
         &mdash;
@@ -442,7 +442,7 @@ systems</p>
         <span class='name'>conf_template</span>
       
       
-        <span class='type'>(<tt>Any</tt>)</span>
+        <span class='type'>(<tt>String[1]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>&#39;clustershell/clush.conf.erb&#39;</tt>)</em>
@@ -478,7 +478,7 @@ systems</p>
         <span class='name'>defaults_conf_template</span>
       
       
-        <span class='type'>(<tt>Any</tt>)</span>
+        <span class='type'>(<tt>String[1]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>&#39;clustershell/defaults.conf.erb&#39;</tt>)</em>
@@ -550,7 +550,7 @@ systems</p>
         <span class='name'>groups_conf_template</span>
       
       
-        <span class='type'>(<tt>Any</tt>)</span>
+        <span class='type'>(<tt>String[1]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>&#39;clustershell/groups.conf.erb&#39;</tt>)</em>
@@ -648,8 +648,7 @@ systems</p>
       
         &mdash;
         <div class='inline'>
-<p>The default remote command to use, usually <code>ssh</code> or
-<code>rsh</code></p>
+<p>The default remote command to use, usually <code>ssh</code> or <code>rsh</code></p>
 </div>
       
     </li>
@@ -904,8 +903,7 @@ systems</p>
 240
 241
 242
-243
-244</pre>
+243</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 76</span>
@@ -927,16 +925,16 @@ class clustershell (
   Optional[String] $package_ensure = undef,
   Boolean $manage_epel = true,
   Boolean $install_python = false,
-  Optional[String] $python_package_name = undef,
+  String[1] $python_package_name = &#39;python3-clustershell&#39;,
   Stdlib::Absolutepath $conf_dir = &#39;/etc/clustershell&#39;,
   Stdlib::Absolutepath $conf = &#39;/etc/clustershell/clush.conf&#39;,
-  $conf_template  = &#39;clustershell/clush.conf.erb&#39;,
+  String[1] $conf_template  = &#39;clustershell/clush.conf.erb&#39;,
   Stdlib::Absolutepath $defaults_conf = &#39;/etc/clustershell/defaults.conf&#39;,
-  $defaults_conf_template = &#39;clustershell/defaults.conf.erb&#39;,
+  String[1] $defaults_conf_template = &#39;clustershell/defaults.conf.erb&#39;,
   Stdlib::Absolutepath $groups_config = &#39;/etc/clustershell/groups.d/local.cfg&#39;,
   Stdlib::Absolutepath $groups_concat_dir = &#39;/etc/clustershell/tmp&#39;,
   Stdlib::Absolutepath $groups_conf = &#39;/etc/clustershell/groups.conf&#39;,
-  $groups_conf_template = &#39;clustershell/groups.conf.erb&#39;,
+  String[1] $groups_conf_template = &#39;clustershell/groups.conf.erb&#39;,
   Stdlib::Absolutepath $groups_auto_dir = &#39;/etc/clustershell/groups.d&#39;,
   Stdlib::Absolutepath $groups_conf_dir = &#39;/etc/clustershell/groups.conf.d&#39;,
   Boolean $include_slurm_groups = false,
@@ -947,7 +945,6 @@ class clustershell (
   Boolean $include_genders_groups = false,
   Boolean $manage_genders = true,
 ) {
-
   if $ensure == &#39;absent&#39; {
     $_package_ensure = pick($package_ensure, &#39;absent&#39;)
   } else {
@@ -956,7 +953,7 @@ class clustershell (
 
   if dig($facts, &#39;os&#39;, &#39;family&#39;) == &#39;RedHat&#39; {
     if $manage_epel {
-      include ::epel
+      include epel
       $package_require = Yumrepo[&#39;epel&#39;]
     } else {
       $package_require = undef
@@ -1068,7 +1065,7 @@ class clustershell (
 
   if $include_genders_groups {
     if $manage_genders {
-      include ::genders
+      include genders
       Class[&#39;genders&#39;] -&gt; Clustershell::Group_source[&#39;genders&#39;]
     }
     clustershell::group_source { &#39;genders&#39;:
