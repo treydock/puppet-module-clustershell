@@ -10,9 +10,9 @@
 
 ### Defined types
 
-* [`clustershell::group_source`](#clustershellgroup_source): Define group sources
-* [`clustershell::group_yaml`](#clustershellgroup_yaml): Manage a group yaml file
-* [`clustershell::groupmember`](#clustershellgroupmember): Manage local.cfg group members
+* [`clustershell::group_source`](#clustershell--group_source): Define group sources
+* [`clustershell::group_yaml`](#clustershell--group_yaml): Manage a group yaml file
+* [`clustershell::groupmember`](#clustershell--groupmember): Manage local.cfg group members
 
 ## Classes
 
@@ -32,43 +32,43 @@ include ::clustershell
 
 The following parameters are available in the `clustershell` class:
 
-* [`fanout`](#fanout)
-* [`connect_timeout`](#connect_timeout)
-* [`command_timeout`](#command_timeout)
-* [`color`](#color)
-* [`fd_max`](#fd_max)
-* [`history_size`](#history_size)
-* [`node_count`](#node_count)
-* [`verbosity`](#verbosity)
-* [`ssh_user`](#ssh_user)
-* [`ssh_path`](#ssh_path)
-* [`ssh_options`](#ssh_options)
-* [`ensure`](#ensure)
-* [`package_name`](#package_name)
-* [`package_ensure`](#package_ensure)
-* [`manage_epel`](#manage_epel)
-* [`install_python`](#install_python)
-* [`python_package_name`](#python_package_name)
-* [`conf_dir`](#conf_dir)
-* [`conf`](#conf)
-* [`conf_template`](#conf_template)
-* [`defaults_conf`](#defaults_conf)
-* [`defaults_conf_template`](#defaults_conf_template)
-* [`groups_config`](#groups_config)
-* [`groups_concat_dir`](#groups_concat_dir)
-* [`groups_conf`](#groups_conf)
-* [`groups_conf_template`](#groups_conf_template)
-* [`groups_auto_dir`](#groups_auto_dir)
-* [`groups_conf_dir`](#groups_conf_dir)
-* [`include_slurm_groups`](#include_slurm_groups)
-* [`default_group_source`](#default_group_source)
-* [`default_distant_workername`](#default_distant_workername)
-* [`groupmembers`](#groupmembers)
-* [`group_yaml`](#group_yaml)
-* [`include_genders_groups`](#include_genders_groups)
-* [`manage_genders`](#manage_genders)
+* [`fanout`](#-clustershell--fanout)
+* [`connect_timeout`](#-clustershell--connect_timeout)
+* [`command_timeout`](#-clustershell--command_timeout)
+* [`color`](#-clustershell--color)
+* [`fd_max`](#-clustershell--fd_max)
+* [`history_size`](#-clustershell--history_size)
+* [`node_count`](#-clustershell--node_count)
+* [`verbosity`](#-clustershell--verbosity)
+* [`ssh_user`](#-clustershell--ssh_user)
+* [`ssh_path`](#-clustershell--ssh_path)
+* [`ssh_options`](#-clustershell--ssh_options)
+* [`ensure`](#-clustershell--ensure)
+* [`package_name`](#-clustershell--package_name)
+* [`package_ensure`](#-clustershell--package_ensure)
+* [`manage_epel`](#-clustershell--manage_epel)
+* [`install_python`](#-clustershell--install_python)
+* [`python_package_name`](#-clustershell--python_package_name)
+* [`conf_dir`](#-clustershell--conf_dir)
+* [`conf`](#-clustershell--conf)
+* [`conf_template`](#-clustershell--conf_template)
+* [`defaults_conf`](#-clustershell--defaults_conf)
+* [`defaults_conf_template`](#-clustershell--defaults_conf_template)
+* [`groups_config`](#-clustershell--groups_config)
+* [`groups_concat_dir`](#-clustershell--groups_concat_dir)
+* [`groups_conf`](#-clustershell--groups_conf)
+* [`groups_conf_template`](#-clustershell--groups_conf_template)
+* [`groups_auto_dir`](#-clustershell--groups_auto_dir)
+* [`groups_conf_dir`](#-clustershell--groups_conf_dir)
+* [`include_slurm_groups`](#-clustershell--include_slurm_groups)
+* [`default_group_source`](#-clustershell--default_group_source)
+* [`default_distant_workername`](#-clustershell--default_distant_workername)
+* [`groupmembers`](#-clustershell--groupmembers)
+* [`group_yaml`](#-clustershell--group_yaml)
+* [`include_genders_groups`](#-clustershell--include_genders_groups)
+* [`manage_genders`](#-clustershell--manage_genders)
 
-##### <a name="fanout"></a>`fanout`
+##### <a name="-clustershell--fanout"></a>`fanout`
 
 Data type: `Integer`
 
@@ -76,7 +76,7 @@ Value for clush.conf fanout
 
 Default value: `64`
 
-##### <a name="connect_timeout"></a>`connect_timeout`
+##### <a name="-clustershell--connect_timeout"></a>`connect_timeout`
 
 Data type: `Integer`
 
@@ -84,7 +84,7 @@ Value for clush.conf connect_timeout
 
 Default value: `15`
 
-##### <a name="command_timeout"></a>`command_timeout`
+##### <a name="-clustershell--command_timeout"></a>`command_timeout`
 
 Data type: `Integer`
 
@@ -92,7 +92,7 @@ Value for clush.conf command_timeout
 
 Default value: `0`
 
-##### <a name="color"></a>`color`
+##### <a name="-clustershell--color"></a>`color`
 
 Data type: `String`
 
@@ -100,7 +100,7 @@ Value for clush.conf color
 
 Default value: `'auto'`
 
-##### <a name="fd_max"></a>`fd_max`
+##### <a name="-clustershell--fd_max"></a>`fd_max`
 
 Data type: `Integer`
 
@@ -108,7 +108,7 @@ Value for clush.conf fd_max
 
 Default value: `8192`
 
-##### <a name="history_size"></a>`history_size`
+##### <a name="-clustershell--history_size"></a>`history_size`
 
 Data type: `Integer`
 
@@ -116,7 +116,7 @@ Value for clush.conf history_size
 
 Default value: `100`
 
-##### <a name="node_count"></a>`node_count`
+##### <a name="-clustershell--node_count"></a>`node_count`
 
 Data type: `String`
 
@@ -124,7 +124,7 @@ Value for clush.conf node_count
 
 Default value: `'yes'`
 
-##### <a name="verbosity"></a>`verbosity`
+##### <a name="-clustershell--verbosity"></a>`verbosity`
 
 Data type: `String`
 
@@ -132,15 +132,15 @@ Value for clush.conf verbosity
 
 Default value: `'1'`
 
-##### <a name="ssh_user"></a>`ssh_user`
+##### <a name="-clustershell--ssh_user"></a>`ssh_user`
 
 Data type: `Optional[String]`
 
 SSH user
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ssh_path"></a>`ssh_path`
+##### <a name="-clustershell--ssh_path"></a>`ssh_path`
 
 Data type: `String`
 
@@ -148,7 +148,7 @@ Path to SSH command
 
 Default value: `'ssh'`
 
-##### <a name="ssh_options"></a>`ssh_options`
+##### <a name="-clustershell--ssh_options"></a>`ssh_options`
 
 Data type: `String`
 
@@ -156,7 +156,7 @@ SSH options
 
 Default value: `'-oStrictHostKeyChecking=no'`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-clustershell--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent']`
 
@@ -164,7 +164,7 @@ Module ensure property
 
 Default value: `'present'`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-clustershell--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -172,39 +172,39 @@ clustershell package name
 
 Default value: `'clustershell'`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-clustershell--package_ensure"></a>`package_ensure`
 
 Data type: `Optional[String]`
 
 The package ensure property, defaults based on `ensure` property
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_epel"></a>`manage_epel`
+##### <a name="-clustershell--manage_epel"></a>`manage_epel`
 
 Data type: `Boolean`
 
 Boolean that sets of EPEL module should be managed for Red Hat based systems
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="install_python"></a>`install_python`
+##### <a name="-clustershell--install_python"></a>`install_python`
 
 Data type: `Boolean`
 
 Boolean that sets if python module should be installed
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="python_package_name"></a>`python_package_name`
+##### <a name="-clustershell--python_package_name"></a>`python_package_name`
 
-Data type: `Optional[String]`
+Data type: `String[1]`
 
 Package name of python module, only applies to Red Hat based systems
 
-Default value: ``undef``
+Default value: `'python3-clustershell'`
 
-##### <a name="conf_dir"></a>`conf_dir`
+##### <a name="-clustershell--conf_dir"></a>`conf_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -212,7 +212,7 @@ Path to clustershell configuration directory
 
 Default value: `'/etc/clustershell'`
 
-##### <a name="conf"></a>`conf`
+##### <a name="-clustershell--conf"></a>`conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -220,15 +220,15 @@ Path to clush.conf
 
 Default value: `'/etc/clustershell/clush.conf'`
 
-##### <a name="conf_template"></a>`conf_template`
+##### <a name="-clustershell--conf_template"></a>`conf_template`
 
-Data type: `Any`
+Data type: `String[1]`
 
 clush.conf template
 
 Default value: `'clustershell/clush.conf.erb'`
 
-##### <a name="defaults_conf"></a>`defaults_conf`
+##### <a name="-clustershell--defaults_conf"></a>`defaults_conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -236,15 +236,15 @@ Path to defaults.conf
 
 Default value: `'/etc/clustershell/defaults.conf'`
 
-##### <a name="defaults_conf_template"></a>`defaults_conf_template`
+##### <a name="-clustershell--defaults_conf_template"></a>`defaults_conf_template`
 
-Data type: `Any`
+Data type: `String[1]`
 
 defaults.conf template
 
 Default value: `'clustershell/defaults.conf.erb'`
 
-##### <a name="groups_config"></a>`groups_config`
+##### <a name="-clustershell--groups_config"></a>`groups_config`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -252,7 +252,7 @@ path to local.cfg groups config file
 
 Default value: `'/etc/clustershell/groups.d/local.cfg'`
 
-##### <a name="groups_concat_dir"></a>`groups_concat_dir`
+##### <a name="-clustershell--groups_concat_dir"></a>`groups_concat_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -260,7 +260,7 @@ groups concat directory
 
 Default value: `'/etc/clustershell/tmp'`
 
-##### <a name="groups_conf"></a>`groups_conf`
+##### <a name="-clustershell--groups_conf"></a>`groups_conf`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -268,15 +268,15 @@ path to groups.conf
 
 Default value: `'/etc/clustershell/groups.conf'`
 
-##### <a name="groups_conf_template"></a>`groups_conf_template`
+##### <a name="-clustershell--groups_conf_template"></a>`groups_conf_template`
 
-Data type: `Any`
+Data type: `String[1]`
 
 groups.conf template
 
 Default value: `'clustershell/groups.conf.erb'`
 
-##### <a name="groups_auto_dir"></a>`groups_auto_dir`
+##### <a name="-clustershell--groups_auto_dir"></a>`groups_auto_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -284,7 +284,7 @@ path to groups auto directory
 
 Default value: `'/etc/clustershell/groups.d'`
 
-##### <a name="groups_conf_dir"></a>`groups_conf_dir`
+##### <a name="-clustershell--groups_conf_dir"></a>`groups_conf_dir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -292,15 +292,15 @@ path to groups.conf.d
 
 Default value: `'/etc/clustershell/groups.conf.d'`
 
-##### <a name="include_slurm_groups"></a>`include_slurm_groups`
+##### <a name="-clustershell--include_slurm_groups"></a>`include_slurm_groups`
 
 Data type: `Boolean`
 
 Boolean that sets if should include slurm groups
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="default_group_source"></a>`default_group_source`
+##### <a name="-clustershell--default_group_source"></a>`default_group_source`
 
 Data type: `String`
 
@@ -308,7 +308,7 @@ The default group source
 
 Default value: `'local'`
 
-##### <a name="default_distant_workername"></a>`default_distant_workername`
+##### <a name="-clustershell--default_distant_workername"></a>`default_distant_workername`
 
 Data type: `String`
 
@@ -316,7 +316,7 @@ The default remote command to use, usually `ssh` or `rsh`
 
 Default value: `'ssh'`
 
-##### <a name="groupmembers"></a>`groupmembers`
+##### <a name="-clustershell--groupmembers"></a>`groupmembers`
 
 Data type: `Hash`
 
@@ -324,7 +324,7 @@ Hash of resources to pass to clustershell::groupmember
 
 Default value: `{}`
 
-##### <a name="group_yaml"></a>`group_yaml`
+##### <a name="-clustershell--group_yaml"></a>`group_yaml`
 
 Data type: `Hash`
 
@@ -332,25 +332,25 @@ Hash of resources to pass to clustershell::group_yaml
 
 Default value: `{}`
 
-##### <a name="include_genders_groups"></a>`include_genders_groups`
+##### <a name="-clustershell--include_genders_groups"></a>`include_genders_groups`
 
 Data type: `Boolean`
 
 Include genders group source
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="manage_genders"></a>`manage_genders`
+##### <a name="-clustershell--manage_genders"></a>`manage_genders`
 
 Data type: `Boolean`
 
 Manage genders class when including genders group source
 
-Default value: ``true``
+Default value: `true`
 
 ## Defined types
 
-### <a name="clustershellgroup_source"></a>`clustershell::group_source`
+### <a name="clustershell--group_source"></a>`clustershell::group_source`
 
 Define group sources
 
@@ -372,20 +372,20 @@ clustershell::group_source { 'slurm':
 
 The following parameters are available in the `clustershell::group_source` defined type:
 
-* [`map`](#map)
-* [`ensure`](#ensure)
-* [`all`](#all)
-* [`list`](#list)
-* [`reverse`](#reverse)
-* [`section`](#section)
+* [`map`](#-clustershell--group_source--map)
+* [`ensure`](#-clustershell--group_source--ensure)
+* [`all`](#-clustershell--group_source--all)
+* [`list`](#-clustershell--group_source--list)
+* [`reverse`](#-clustershell--group_source--reverse)
+* [`section`](#-clustershell--group_source--section)
 
-##### <a name="map"></a>`map`
+##### <a name="-clustershell--group_source--map"></a>`map`
 
 Data type: `String`
 
 map command
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-clustershell--group_source--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent','file']`
 
@@ -393,7 +393,7 @@ Ensure property
 
 Default value: `'present'`
 
-##### <a name="all"></a>`all`
+##### <a name="-clustershell--group_source--all"></a>`all`
 
 Data type: `String`
 
@@ -401,7 +401,7 @@ all command
 
 Default value: `'UNSET'`
 
-##### <a name="list"></a>`list`
+##### <a name="-clustershell--group_source--list"></a>`list`
 
 Data type: `String`
 
@@ -409,7 +409,7 @@ list command
 
 Default value: `'UNSET'`
 
-##### <a name="reverse"></a>`reverse`
+##### <a name="-clustershell--group_source--reverse"></a>`reverse`
 
 Data type: `String`
 
@@ -417,7 +417,7 @@ reverse command
 
 Default value: `'UNSET'`
 
-##### <a name="section"></a>`section`
+##### <a name="-clustershell--group_source--section"></a>`section`
 
 Data type: `String`
 
@@ -425,7 +425,7 @@ Name of section for group source
 
 Default value: `$name`
 
-### <a name="clustershellgroup_yaml"></a>`clustershell::group_yaml`
+### <a name="clustershell--group_yaml"></a>`clustershell::group_yaml`
 
 Manage a group yaml file
 
@@ -448,12 +448,12 @@ clustershell::group_yaml { 'roles':
 
 The following parameters are available in the `clustershell::group_yaml` defined type:
 
-* [`ensure`](#ensure)
-* [`data`](#data)
-* [`source`](#source)
-* [`content`](#content)
+* [`ensure`](#-clustershell--group_yaml--ensure)
+* [`data`](#-clustershell--group_yaml--data)
+* [`source`](#-clustershell--group_yaml--source)
+* [`content`](#-clustershell--group_yaml--content)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-clustershell--group_yaml--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent','file']`
 
@@ -461,7 +461,7 @@ File ensure property
 
 Default value: `'present'`
 
-##### <a name="data"></a>`data`
+##### <a name="-clustershell--group_yaml--data"></a>`data`
 
 Data type: `Hash`
 
@@ -469,23 +469,23 @@ The data to use in defining the YAML groups
 
 Default value: `{}`
 
-##### <a name="source"></a>`source`
+##### <a name="-clustershell--group_yaml--source"></a>`source`
 
 Data type: `Optional[String]`
 
 Source that can be used to define the YAML file
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="content"></a>`content`
+##### <a name="-clustershell--group_yaml--content"></a>`content`
 
 Data type: `Optional[String]`
 
 Content that can override this module's template for this YAML file
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="clustershellgroupmember"></a>`clustershell::groupmember`
+### <a name="clustershell--groupmember"></a>`clustershell::groupmember`
 
 Manage local.cfg group members
 
@@ -504,16 +504,16 @@ clustershell::groupmember { 'compute':
 
 The following parameters are available in the `clustershell::groupmember` defined type:
 
-* [`group`](#group)
-* [`member`](#member)
+* [`group`](#-clustershell--groupmember--group)
+* [`member`](#-clustershell--groupmember--member)
 
-##### <a name="group"></a>`group`
+##### <a name="-clustershell--groupmember--group"></a>`group`
 
 Data type: `String`
 
 Name of the group
 
-##### <a name="member"></a>`member`
+##### <a name="-clustershell--groupmember--member"></a>`member`
 
 Data type: `Variant[Array, String]`
 
