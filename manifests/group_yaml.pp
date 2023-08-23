@@ -24,10 +24,9 @@ define clustershell::group_yaml (
   Optional[String] $source = undef,
   Optional[String] $content = undef,
 ) {
+  include clustershell
 
-  include ::clustershell
-
-  $path = "${::clustershell::groups_auto_dir}/${name}.yaml"
+  $path = "${clustershell::groups_auto_dir}/${name}.yaml"
 
   if ! $source and ! $content {
     $_content = template('clustershell/group_yaml.erb')
@@ -44,5 +43,4 @@ define clustershell::group_yaml (
     content => $_content,
     source  => $source,
   }
-
 }
