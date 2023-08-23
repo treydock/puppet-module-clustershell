@@ -29,10 +29,9 @@ define clustershell::group_source (
   String $reverse = 'UNSET',
   String $section = $name,
 ) {
+  include clustershell
 
-  include ::clustershell
-
-  $path = "${::clustershell::groups_conf_dir}/${name}.conf"
+  $path = "${clustershell::groups_conf_dir}/${name}.conf"
 
   file { "clustershell::group_source ${name}":
     ensure  => $ensure,
@@ -43,5 +42,4 @@ define clustershell::group_source (
     content => template('clustershell/group_source.conf.erb'),
     require => File['/etc/clustershell/groups.conf.d'],
   }
-
 }

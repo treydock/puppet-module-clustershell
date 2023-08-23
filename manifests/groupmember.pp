@@ -14,7 +14,6 @@ define clustershell::groupmember (
   String $group,
   Variant[Array, String] $member = $title,
 ) {
-
   if $member =~ String {
     $members = [$member]
   } else {
@@ -27,5 +26,4 @@ define clustershell::groupmember (
     content => "${group}: ${_members}\n",
     order   => '50',
   }
-
 }

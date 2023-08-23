@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'clustershell::group_source' do
@@ -14,7 +16,7 @@ describe 'clustershell::group_source' do
           map: 'sinfo -h -o "%N" -p $GROUP',
           all: 'sinfo -h -o "%N"',
           list: 'sinfo -h -o "%P"',
-          reverse: 'sinfo -h -N -o "%P" -n $NODE',
+          reverse: 'sinfo -h -N -o "%P" -n $NODE'
         }
       end
 
@@ -36,7 +38,7 @@ describe 'clustershell::group_source' do
                                 'map: sinfo -h -o "%N" -p $GROUP',
                                 'all: sinfo -h -o "%N"',
                                 'list: sinfo -h -o "%P"',
-                                'reverse: sinfo -h -N -o "%P" -n $NODE',
+                                'reverse: sinfo -h -N -o "%P" -n $NODE'
                               ])
       end
     end

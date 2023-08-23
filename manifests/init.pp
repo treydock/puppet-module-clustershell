@@ -93,13 +93,13 @@ class clustershell (
   Optional[String] $python_package_name = undef,
   Stdlib::Absolutepath $conf_dir = '/etc/clustershell',
   Stdlib::Absolutepath $conf = '/etc/clustershell/clush.conf',
-  $conf_template  = 'clustershell/clush.conf.erb',
+  String[1] $conf_template  = 'clustershell/clush.conf.erb',
   Stdlib::Absolutepath $defaults_conf = '/etc/clustershell/defaults.conf',
-  $defaults_conf_template = 'clustershell/defaults.conf.erb',
+  String[1] $defaults_conf_template = 'clustershell/defaults.conf.erb',
   Stdlib::Absolutepath $groups_config = '/etc/clustershell/groups.d/local.cfg',
   Stdlib::Absolutepath $groups_concat_dir = '/etc/clustershell/tmp',
   Stdlib::Absolutepath $groups_conf = '/etc/clustershell/groups.conf',
-  $groups_conf_template = 'clustershell/groups.conf.erb',
+  String[1] $groups_conf_template = 'clustershell/groups.conf.erb',
   Stdlib::Absolutepath $groups_auto_dir = '/etc/clustershell/groups.d',
   Stdlib::Absolutepath $groups_conf_dir = '/etc/clustershell/groups.conf.d',
   Boolean $include_slurm_groups = false,
@@ -110,7 +110,6 @@ class clustershell (
   Boolean $include_genders_groups = false,
   Boolean $manage_genders = true,
 ) {
-
   if $ensure == 'absent' {
     $_package_ensure = pick($package_ensure, 'absent')
   } else {
@@ -119,7 +118,7 @@ class clustershell (
 
   if dig($facts, 'os', 'family') == 'RedHat' {
     if $manage_epel {
-      include ::epel
+      include epel
       $package_require = Yumrepo['epel']
     } else {
       $package_require = undef
@@ -231,7 +230,7 @@ class clustershell (
 
   if $include_genders_groups {
     if $manage_genders {
-      include ::genders
+      include genders
       Class['genders'] -> Clustershell::Group_source['genders']
     }
     clustershell::group_source { 'genders':

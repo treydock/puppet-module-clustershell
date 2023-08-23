@@ -1,15 +1,12 @@
 fixtures:
-  repositories:
+  forge_modules:
     stdlib:
-      repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
+      repo: puppetlabs/stdlib
     concat:
-      repo: https://github.com/puppetlabs/puppetlabs-concat.git
+      repo: puppetlabs/concat
     yumrepo_core:
-      repo: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
-      puppet_version: ">= 6.0.0"
+      repo: puppetlabs/yumrepo_core
     epel:
-      repo: https://github.com/voxpupuli/puppet-epel.git
+      repo: puppet/epel
     genders:
-      repo: https://github.com/treydock/puppet-module-genders.git
-  symlinks:
-    clustershell: "#{source_dir}"
+      repo: treydock/genders

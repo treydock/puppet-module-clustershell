@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'clustershell' do
@@ -8,6 +10,7 @@ describe 'clustershell' do
       end
 
       it { is_expected.to create_class('clustershell') }
+
       if facts[:os]['family'] == 'RedHat'
         package_require = 'Yumrepo[epel]'
         it { is_expected.to contain_class('epel') }
@@ -67,7 +70,7 @@ describe 'clustershell' do
                                 'node_count: yes',
                                 'verbosity: 1',
                                 'ssh_path: ssh',
-                                'ssh_options: -oStrictHostKeyChecking=no',
+                                'ssh_options: -oStrictHostKeyChecking=no'
                               ])
       end
 
@@ -83,7 +86,7 @@ describe 'clustershell' do
                           '[Main]',
                           'default: local',
                           'confdir: /etc/clustershell/groups.conf.d $CFGDIR/groups.conf.d',
-                          'autodir: /etc/clustershell/groups.d $CFGDIR/groups.d',
+                          'autodir: /etc/clustershell/groups.d $CFGDIR/groups.d'
                         ])
       end
 
@@ -118,11 +121,11 @@ describe 'clustershell' do
               'nodes' => {
                 'data' => {
                   'roles' => {
-                    'compute' => 'compute[01-04]',
-                  },
-                },
-              },
-            },
+                    'compute' => 'compute[01-04]'
+                  }
+                }
+              }
+            }
           }
         end
 
