@@ -67,6 +67,7 @@ describe 'clustershell' do
                                 'color: auto',
                                 'fd_max: 8192',
                                 'history_size: 100',
+                                'maxrc: no',
                                 'node_count: yes',
                                 'verbosity: 1',
                                 'ssh_path: ssh',

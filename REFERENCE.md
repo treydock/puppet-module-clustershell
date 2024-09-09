@@ -38,6 +38,7 @@ The following parameters are available in the `clustershell` class:
 * [`color`](#-clustershell--color)
 * [`fd_max`](#-clustershell--fd_max)
 * [`history_size`](#-clustershell--history_size)
+* [`maxrc`](#-clustershell--maxrc)
 * [`node_count`](#-clustershell--node_count)
 * [`verbosity`](#-clustershell--verbosity)
 * [`ssh_user`](#-clustershell--ssh_user)
@@ -115,6 +116,14 @@ Data type: `Integer`
 Value for clush.conf history_size
 
 Default value: `100`
+
+##### <a name="-clustershell--maxrc"></a>`maxrc`
+
+Data type: `String`
+
+Value for clush.conf maxrc
+
+Default value: `'no'`
 
 ##### <a name="-clustershell--node_count"></a>`node_count`
 

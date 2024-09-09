@@ -15,6 +15,8 @@
 #   Value for clush.conf fd_max
 # @param history_size
 #   Value for clush.conf history_size
+# @param maxrc
+#   Value for clush.conf maxrc
 # @param node_count
 #   Value for clush.conf node_count
 # @param verbosity
@@ -80,6 +82,7 @@ class clustershell (
   String $color = 'auto',
   Integer $fd_max = 8192,
   Integer $history_size = 100,
+  String $maxrc = 'no',
   String $node_count = 'yes',
   String $verbosity = '1',
   Optional[String] $ssh_user = undef,
