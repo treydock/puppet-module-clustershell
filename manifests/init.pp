@@ -45,6 +45,8 @@
 #   Path to clustershell configuration directory
 # @param conf
 #   Path to clush.conf
+# @param clush_conf_dir
+#   path to clush.conf.d
 # @param conf_template
 #   clush.conf template
 # @param defaults_conf

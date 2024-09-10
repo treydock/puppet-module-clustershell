@@ -53,6 +53,7 @@ The following parameters are available in the `clustershell` class:
 * [`python_package_name`](#-clustershell--python_package_name)
 * [`conf_dir`](#-clustershell--conf_dir)
 * [`conf`](#-clustershell--conf)
+* [`clush_conf_dir`](#-clustershell--clush_conf_dir)
 * [`conf_template`](#-clustershell--conf_template)
 * [`defaults_conf`](#-clustershell--defaults_conf)
 * [`defaults_conf_template`](#-clustershell--defaults_conf_template)
@@ -69,7 +70,6 @@ The following parameters are available in the `clustershell` class:
 * [`group_yaml`](#-clustershell--group_yaml)
 * [`include_genders_groups`](#-clustershell--include_genders_groups)
 * [`manage_genders`](#-clustershell--manage_genders)
-* [`clush_conf_dir`](#-clustershell--clush_conf_dir)
 
 ##### <a name="-clustershell--fanout"></a>`fanout`
 
@@ -239,6 +239,14 @@ Path to clush.conf
 
 Default value: `'/etc/clustershell/clush.conf'`
 
+##### <a name="-clustershell--clush_conf_dir"></a>`clush_conf_dir`
+
+Data type: `Stdlib::Absolutepath`
+
+path to clush.conf.d
+
+Default value: `'/etc/clustershell/clush.conf.d'`
+
 ##### <a name="-clustershell--conf_template"></a>`conf_template`
 
 Data type: `String[1]`
@@ -366,14 +374,6 @@ Data type: `Boolean`
 Manage genders class when including genders group source
 
 Default value: `true`
-
-##### <a name="-clustershell--clush_conf_dir"></a>`clush_conf_dir`
-
-Data type: `Stdlib::Absolutepath`
-
-
-
-Default value: `'/etc/clustershell/clush.conf.d'`
 
 ## Defined types
 
