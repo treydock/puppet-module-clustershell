@@ -21,6 +21,8 @@
 #   Value for clush.conf node_count
 # @param verbosity
 #   Value for clush.conf verbosity
+# @param confdir
+#   Value for clush.conf confdir
 # @param ssh_user
 #   SSH user
 # @param ssh_path
@@ -85,6 +87,7 @@ class clustershell (
   String $maxrc = 'no',
   String $node_count = 'yes',
   String $verbosity = '1',
+  String $confdir = '/etc/clustershell/clush.conf.d $CFGDIR/clush.conf.d',
   Optional[String] $ssh_user = undef,
   String $ssh_path = 'ssh',
   String $ssh_options = '-oStrictHostKeyChecking=no',
@@ -96,6 +99,7 @@ class clustershell (
   String[1] $python_package_name = 'python3-clustershell',
   Stdlib::Absolutepath $conf_dir = '/etc/clustershell',
   Stdlib::Absolutepath $conf = '/etc/clustershell/clush.conf',
+  Stdlib::Absolutepath $clush_conf_dir = '/etc/clustershell/clush.conf.d',
   String[1] $conf_template  = 'clustershell/clush.conf.erb',
   Stdlib::Absolutepath $defaults_conf = '/etc/clustershell/defaults.conf',
   String[1] $defaults_conf_template = 'clustershell/defaults.conf.erb',
@@ -180,6 +184,14 @@ class clustershell (
     mode    => '0644',
     require => File['/etc/clustershell'],
     content => template($conf_template),
+  }
+
+  file { '/etc/clustershell/clush.conf.d':
+    ensure => 'directory',
+    path   => $clush_conf_dir,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
 
   file { '/etc/clustershell/defaults.conf':

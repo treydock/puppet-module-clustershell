@@ -41,6 +41,7 @@ The following parameters are available in the `clustershell` class:
 * [`maxrc`](#-clustershell--maxrc)
 * [`node_count`](#-clustershell--node_count)
 * [`verbosity`](#-clustershell--verbosity)
+* [`confdir`](#-clustershell--confdir)
 * [`ssh_user`](#-clustershell--ssh_user)
 * [`ssh_path`](#-clustershell--ssh_path)
 * [`ssh_options`](#-clustershell--ssh_options)
@@ -68,6 +69,7 @@ The following parameters are available in the `clustershell` class:
 * [`group_yaml`](#-clustershell--group_yaml)
 * [`include_genders_groups`](#-clustershell--include_genders_groups)
 * [`manage_genders`](#-clustershell--manage_genders)
+* [`clush_conf_dir`](#-clustershell--clush_conf_dir)
 
 ##### <a name="-clustershell--fanout"></a>`fanout`
 
@@ -140,6 +142,14 @@ Data type: `String`
 Value for clush.conf verbosity
 
 Default value: `'1'`
+
+##### <a name="-clustershell--confdir"></a>`confdir`
+
+Data type: `String`
+
+Value for clush.conf confdir
+
+Default value: `'/etc/clustershell/clush.conf.d $CFGDIR/clush.conf.d'`
 
 ##### <a name="-clustershell--ssh_user"></a>`ssh_user`
 
@@ -356,6 +366,14 @@ Data type: `Boolean`
 Manage genders class when including genders group source
 
 Default value: `true`
+
+##### <a name="-clustershell--clush_conf_dir"></a>`clush_conf_dir`
+
+Data type: `Stdlib::Absolutepath`
+
+
+
+Default value: `'/etc/clustershell/clush.conf.d'`
 
 ## Defined types
 

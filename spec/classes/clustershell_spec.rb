@@ -70,6 +70,7 @@ describe 'clustershell' do
                                 'maxrc: no',
                                 'node_count: yes',
                                 'verbosity: 1',
+                                'confdir: /etc/clustershell/clush.conf.d $CFGDIR/clush.conf.d',
                                 'ssh_path: ssh',
                                 'ssh_options: -oStrictHostKeyChecking=no',
                               ],)
