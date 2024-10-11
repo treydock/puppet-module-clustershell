@@ -38,8 +38,10 @@ The following parameters are available in the `clustershell` class:
 * [`color`](#-clustershell--color)
 * [`fd_max`](#-clustershell--fd_max)
 * [`history_size`](#-clustershell--history_size)
+* [`maxrc`](#-clustershell--maxrc)
 * [`node_count`](#-clustershell--node_count)
 * [`verbosity`](#-clustershell--verbosity)
+* [`confdir`](#-clustershell--confdir)
 * [`ssh_user`](#-clustershell--ssh_user)
 * [`ssh_path`](#-clustershell--ssh_path)
 * [`ssh_options`](#-clustershell--ssh_options)
@@ -51,6 +53,7 @@ The following parameters are available in the `clustershell` class:
 * [`python_package_name`](#-clustershell--python_package_name)
 * [`conf_dir`](#-clustershell--conf_dir)
 * [`conf`](#-clustershell--conf)
+* [`clush_conf_dir`](#-clustershell--clush_conf_dir)
 * [`conf_template`](#-clustershell--conf_template)
 * [`defaults_conf`](#-clustershell--defaults_conf)
 * [`defaults_conf_template`](#-clustershell--defaults_conf_template)
@@ -116,6 +119,14 @@ Value for clush.conf history_size
 
 Default value: `100`
 
+##### <a name="-clustershell--maxrc"></a>`maxrc`
+
+Data type: `String`
+
+Value for clush.conf maxrc
+
+Default value: `'no'`
+
 ##### <a name="-clustershell--node_count"></a>`node_count`
 
 Data type: `String`
@@ -131,6 +142,14 @@ Data type: `String`
 Value for clush.conf verbosity
 
 Default value: `'1'`
+
+##### <a name="-clustershell--confdir"></a>`confdir`
+
+Data type: `String`
+
+Value for clush.conf confdir
+
+Default value: `'/etc/clustershell/clush.conf.d $CFGDIR/clush.conf.d'`
 
 ##### <a name="-clustershell--ssh_user"></a>`ssh_user`
 
@@ -219,6 +238,14 @@ Data type: `Stdlib::Absolutepath`
 Path to clush.conf
 
 Default value: `'/etc/clustershell/clush.conf'`
+
+##### <a name="-clustershell--clush_conf_dir"></a>`clush_conf_dir`
+
+Data type: `Stdlib::Absolutepath`
+
+path to clush.conf.d
+
+Default value: `'/etc/clustershell/clush.conf.d'`
 
 ##### <a name="-clustershell--conf_template"></a>`conf_template`
 
