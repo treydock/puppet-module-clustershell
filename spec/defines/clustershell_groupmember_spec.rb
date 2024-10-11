@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'clustershell::groupmember' do
   on_supported_os.each do |os, facts|
-    context "on #{os}" do
+    context "when #{os}" do
       let(:facts) do
         facts
       end
@@ -18,7 +18,7 @@ describe 'clustershell::groupmember' do
       it do
         is_expected.to contain_concat__fragment('clustershell-groups.member foo').with(target: '/etc/clustershell/groups.d/local.cfg',
                                                                                        content: "bar: foo\n",
-                                                                                       order: '50')
+                                                                                       order: '50',)
       end
     end
   end

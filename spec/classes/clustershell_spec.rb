@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'clustershell' do
   on_supported_os.each do |os, facts|
-    context "on #{os}" do
+    context "when #{os}" do
       let(:facts) do
         facts
       end
@@ -21,7 +21,7 @@ describe 'clustershell' do
       it do
         is_expected.to contain_package('clustershell').with(ensure: 'present',
                                                             name: 'clustershell',
-                                                            require: package_require)
+                                                            require: package_require,)
       end
 
       it { is_expected.not_to contain_package('python-clustershell') }
@@ -32,7 +32,7 @@ describe 'clustershell' do
                                                               owner: 'root',
                                                               group: 'root',
                                                               mode: '0755',
-                                                              require: 'Package[clustershell]')
+                                                              require: 'Package[clustershell]',)
       end
 
       it do
@@ -40,7 +40,7 @@ describe 'clustershell' do
                                                                             path: '/etc/clustershell/groups.conf.d',
                                                                             owner: 'root',
                                                                             group: 'root',
-                                                                            mode: '0755')
+                                                                            mode: '0755',)
       end
 
       it do
@@ -48,14 +48,14 @@ describe 'clustershell' do
                                                                        path: '/etc/clustershell/groups.d',
                                                                        owner: 'root',
                                                                        group: 'root',
-                                                                       mode: '0755')
+                                                                       mode: '0755',)
       end
 
       it do
         is_expected.to contain_file('/etc/clustershell/clush.conf').with(ensure: 'file',
                                                                          owner: 'root',
                                                                          group: 'root',
-                                                                         mode: '0644')
+                                                                         mode: '0644',)
       end
 
       it do
@@ -70,15 +70,15 @@ describe 'clustershell' do
                                 'node_count: yes',
                                 'verbosity: 1',
                                 'ssh_path: ssh',
-                                'ssh_options: -oStrictHostKeyChecking=no'
-                              ])
+                                'ssh_options: -oStrictHostKeyChecking=no',
+                              ],)
       end
 
       it do
         is_expected.to contain_file('/etc/clustershell/groups.conf').with(ensure: 'file',
                                                                           owner: 'root',
                                                                           group: 'root',
-                                                                          mode: '0644')
+                                                                          mode: '0644',)
       end
 
       it do
@@ -86,8 +86,8 @@ describe 'clustershell' do
                           '[Main]',
                           'default: local',
                           'confdir: /etc/clustershell/groups.conf.d $CFGDIR/groups.conf.d',
-                          'autodir: /etc/clustershell/groups.d $CFGDIR/groups.d'
-                        ])
+                          'autodir: /etc/clustershell/groups.d $CFGDIR/groups.d',
+                        ],)
       end
 
       it do
@@ -96,7 +96,7 @@ describe 'clustershell' do
                                                                                    owner: 'root',
                                                                                    group: 'root',
                                                                                    mode: '0644',
-                                                                                   require: 'File[/etc/clustershell/groups.d]')
+                                                                                   require: 'File[/etc/clustershell/groups.d]',)
       end
 
       it { is_expected.not_to contain_clustershell__group_source('slurm') }
@@ -110,7 +110,7 @@ describe 'clustershell' do
                                                                           map: 'sinfo -h -o "%N" -p $GROUP',
                                                                           all: 'sinfo -a -h -o "%N"',
                                                                           list: 'sinfo -a -h -o "%P" | sed \'s|*||g\'',
-                                                                          reverse: 'sinfo -a -h -N -o "%P" -n $NODE')
+                                                                          reverse: 'sinfo -a -h -N -o "%P" -n $NODE',)
         end
       end
 
@@ -121,11 +121,11 @@ describe 'clustershell' do
               'nodes' => {
                 'data' => {
                   'roles' => {
-                    'compute' => 'compute[01-04]'
-                  }
-                }
-              }
-            }
+                    'compute' => 'compute[01-04]',
+                  },
+                },
+              },
+            },
           }
         end
 
