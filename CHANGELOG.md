@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.0.0](https://github.com/treydock/puppet-module-clustershell/tree/v4.0.0) (2025-02-13)
+
+[Full Changelog](https://github.com/treydock/puppet-module-clustershell/compare/v3.0.0...v4.0.0)
+
+### Changed
+
+- Major Updates - READ DESCRIPTION [\#23](https://github.com/treydock/puppet-module-clustershell/pull/23) ([treydock](https://github.com/treydock))
+
+### Added
+
+- Add new config options [\#22](https://github.com/treydock/puppet-module-clustershell/pull/22) ([glennmorris](https://github.com/glennmorris))
+
 ## [v3.0.0](https://github.com/treydock/puppet-module-clustershell/tree/v3.0.0) (2023-08-23)
 
 [Full Changelog](https://github.com/treydock/puppet-module-clustershell/compare/v2.0.0...v3.0.0)
