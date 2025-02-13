@@ -15,10 +15,14 @@
 #   Value for clush.conf fd_max
 # @param history_size
 #   Value for clush.conf history_size
+# @param maxrc
+#   Value for clush.conf maxrc
 # @param node_count
 #   Value for clush.conf node_count
 # @param verbosity
 #   Value for clush.conf verbosity
+# @param confdir
+#   Value for clush.conf confdir
 # @param ssh_user
 #   SSH user
 # @param ssh_path
@@ -41,6 +45,8 @@
 #   Path to clustershell configuration directory
 # @param conf
 #   Path to clush.conf
+# @param clush_conf_dir
+#   path to clush.conf.d
 # @param conf_template
 #   clush.conf template
 # @param defaults_conf
@@ -80,8 +86,10 @@ class clustershell (
   String $color = 'auto',
   Integer $fd_max = 8192,
   Integer $history_size = 100,
+  String $maxrc = 'no',
   String $node_count = 'yes',
   String $verbosity = '1',
+  String $confdir = '/etc/clustershell/clush.conf.d $CFGDIR/clush.conf.d',
   Optional[String] $ssh_user = undef,
   String $ssh_path = 'ssh',
   String $ssh_options = '-oStrictHostKeyChecking=no',
@@ -93,6 +101,7 @@ class clustershell (
   String[1] $python_package_name = 'python3-clustershell',
   Stdlib::Absolutepath $conf_dir = '/etc/clustershell',
   Stdlib::Absolutepath $conf = '/etc/clustershell/clush.conf',
+  Stdlib::Absolutepath $clush_conf_dir = '/etc/clustershell/clush.conf.d',
   String[1] $conf_template  = 'clustershell/clush.conf.erb',
   Stdlib::Absolutepath $defaults_conf = '/etc/clustershell/defaults.conf',
   String[1] $defaults_conf_template = 'clustershell/defaults.conf.erb',
@@ -177,6 +186,14 @@ class clustershell (
     mode    => '0644',
     require => File['/etc/clustershell'],
     content => template($conf_template),
+  }
+
+  file { '/etc/clustershell/clush.conf.d':
+    ensure => 'directory',
+    path   => $clush_conf_dir,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
 
   file { '/etc/clustershell/defaults.conf':
